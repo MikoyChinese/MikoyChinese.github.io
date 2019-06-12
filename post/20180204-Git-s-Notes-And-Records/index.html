@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="fSGiipkUokMYYBgX8kD0bZ8qJTiBzryZ62fvmjZObLk">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="SVyQBgwT88">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/mlife.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'UWUM0IPSUB',
+      apiKey: '38ed7e353834005a3c755dd19dcb6b38',
+      indexName: 'content',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"Search for ...","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1. The concepts of git: Git: Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.">
+<meta name="keywords" content="wiki,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git&#39;s Notes And Records">
+<meta property="og:url" content="https://www.mikoychinese.top/post/20180204-Git-s-Notes-And-Records/index.html">
+<meta property="og:site_name" content="Mikoy Chinese | 煮酒客">
+<meta property="og:description" content="1. The concepts of git: Git: Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9830587-7b37d6ce5727b778.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9830587-888ae1b1b889d745.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-27T08:47:19.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git&#39;s Notes And Records">
+<meta name="twitter:description" content="1. The concepts of git: Git: Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9830587-7b37d6ce5727b778.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.mikoychinese.top/post/20180204-Git-s-Notes-And-Records/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Git's Notes And Records | Mikoy Chinese | 煮酒客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikoy Chinese | 煮酒客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">I am the man of fortune, and I must seek my fortune.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.mikoychinese.top/post/20180204-Git-s-Notes-And-Records/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikoy Chinese">
+      <meta itemprop="description" content="Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.">
+      <meta itemprop="image" content="/images/avatar_215x215.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikoy Chinese | 煮酒客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Git's Notes And Records
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-02-04 16:35:45" itemprop="dateCreated datePublished" datetime="2018-02-04T16:35:45+08:00">2018-02-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-27 16:47:19" itemprop="dateModified" datetime="2019-02-27T16:47:19+08:00">2019-02-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Wiki/" itemprop="url" rel="index"><span itemprop="name">Wiki</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/post/20180204-Git-s-Notes-And-Records/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/20180204-Git-s-Notes-And-Records/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-The-concepts-of-git"><a href="#1-The-concepts-of-git" class="headerlink" title="1. The concepts of git:"></a>1. The concepts of git:</h2><ul>
+<li><strong>Git:</strong> Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p><strong>Git Space:</strong></p>
+<ul>
+<li><em><font color="blue">Working Directory:</font></em> The working directory is the place where files are checked out.</li>
+<li><em><font color="blue">Staging Area:</font></em> The staging area is a file, generally contained in your Git directory, that stores information about what will go into your next commit. Its technical name in Git parlance is the “index”, but the phrase “staging area” works just as well.</li>
+<li><em><font color="blue">Git Directory:</font></em> The Git directory is where Git stores the metadata(元数据) and object database for your project. This is the most important part of Git, and it is what is copied when you clone a repository from another computer.<br><img src="http://upload-images.jianshu.io/upload_images/9830587-7b37d6ce5727b778.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WorkFlow.png"></li>
+</ul>
+</li>
+<li><p><strong>Files Status:</strong></p>
+<ul>
+<li>Committed means that the data is safely stored in your local database.</li>
+<li>Modified means that you have changed the file but have not committed it to your database yet.</li>
+<li>Staged means that you have marked a modified file in its current version to go into your next commit snapshot.<br><img src="http://upload-images.jianshu.io/upload_images/9830587-888ae1b1b889d745.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="FilesStatus.png"></li>
+</ul>
+</li>
+<li><p><strong>Common Commands:</strong></p>
+<ul>
+<li><em><font color="blue">Comiit:</font></em> Commit holds the current state of the repository. A commit is also named by SHA1 hash. You can consider a commit object as a node of the linked list. Every commit object has a pointer to the parent commit object. From a given commit, you can traverse back by looking at the parent pointer to view the history of the commit. If a commit has multiple parent commits, then that particular commit has been created by merging two branches.</li>
+<li><em><font color="blue">Branch:</font></em> Branches are used to create another line of development. By default, Git has a master branch, which is same as trunk in Subversion. Usually, a branch is created to work on a new feature. Once the feature is completed, it is merged back with the master branch and we delete the branch. Every branch is referenced by HEAD, which points to the latest commit in the branch. Whenever you make a commit, HEAD is updated with the latest commit.</li>
+<li><em><font color="blue">Tag:</font></em> Tag assigns a meaningful name with a specific version in the repository. Tags are very similar to branches, but the difference is that tags are immutable. It means, tag is a branch, which nobody intends to modify. Once a tag is created for a particular commit, even if you create a new commit, it will not be updated. Usually, developers create tags for product releases.</li>
+<li><em><font color="blue">Clone:</font></em> Clone operation creates the instance of the repository. Clone operation not only checks out the working copy, but it also mirrors the complete repository. Users can perform many operations with this local repository. The only time networking gets involved is when the repository instances are being synchronized.</li>
+<li><em><font color="blue">Pull:</font></em> Pull operation copies the changes from a remote repository instance to a local one. The pull operation is used for synchronization between two repository instances. This is same as the update operation in Subversion.</li>
+<li><em><font color="blue">Push:</font></em> Push operation copies changes from a local repository instance to a remote one. This is used to store the changes permanently into the Git repository. This is same as the commit operation in Subversion.</li>
+<li><em><font color="blue">Head:</font></em> HEAD is a pointer, which always points to the latest commit in the branch. Whenever you make a commit, HEAD is updated with the latest commit. The heads of the branches are stored in .git/refs/heads/directory.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-The-Workflow-of-Github"><a href="#2-The-Workflow-of-Github" class="headerlink" title="2.The Workflow of Github:"></a>2.The Workflow of Github:</h2><p><strong><font color="red">Step 1:</font> Getting a Git Repository</strong> <br></p>
+<ol>
+<li><p>You can take a local directory that is currently not under version control, and turn it into Git repository. <br><br> <strong>Initializing a Repository in an Existing Directory:</strong> <br><br> Input Command: <strong><code>cd path</code></strong>, the path is project directory that is currently not under version control and you want to start controlling it with Git. <br><br> Input Command: <strong><code>git init</code></strong>, it creates a new subdirectory named .git that contains all of your necessary repository files — a Git repository skeleton. </p>
+</li>
+<li><p>You can clone an existing Git repository from elsewhere. <br><br> <strong>Cloning an Existing Repository:</strong> <br><br> If you want to get a copy of an existing Git repository — for example, a project you’d like to contribute to — the command you need is <strong><code>git clone &lt;url&gt;</code></strong>. Such is like this:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/MikoyChinese/HelloWorld</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong><font color="red">Step 2:</font> Recording Changes to the Repository</strong> <br></p>
+<ol>
+<li><p><strong>Checking the Status of Your Files:</strong> <br><br> The main tool you use to determine which files are in which state is the <code>git status</code>. It looks like this:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is ahead of &apos;origin/master&apos; by 6 commits.</span><br><span class="line">  (use &quot;git push&quot; to publish your local commits)</span><br><span class="line">nothing to commit, working directory</span><br></pre></td></tr></table></figure>
+<p> If you creat a new file(eg: README.md), and you run git status, you will see your untracked file like so:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line"></span><br><span class="line">    README.md</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p><strong>Tracking New Files:</strong> <br><br> In order to begin tracking a new file, you use the command git add. To begin tracking the README file, you can run this:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;files&gt;</span><br></pre></td></tr></table></figure>
+<p> If you wanna tracking a new folder, you can use the <code>&lt;path&gt;</code> instead of the <code>&lt;files&gt;</code>. Then, that will track all the files in your folder path.</p>
+</li>
+<li><p><strong>Staging Modified Files:</strong> <br><br> If you change a file(eg: README.md) that was already tracked and then you run <code>git status</code> command, you get something that looks like this:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">    new file:   README</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">    modified:   README.md</span><br></pre></td></tr></table></figure>
+<p>  To stage it, you run the <code>git add &lt;file&gt;</code> command. git add is a multipurpose command — you use it to begin tracking new files, to stage files, and to do other things like marking merge-conflicted files as resolved. And then you run <code>git status</code> command, you will see like this:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> $ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">    new file:   README.md</span><br><span class="line">    modified:   README.md</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Ignoring Files:</strong> <br><br> Often, you’ll have a class of files that you don’t want Git to automatically add or even show you as being untracked. These are generally automatically generated files such as log files or files produced by your build system. In such cases, you can create a file listing patterns to match them named .gitignore. Here is an example .gitignore file:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># ignore all .a files</span><br><span class="line">*.a</span><br><span class="line"></span><br><span class="line"># but do track lib.a, even though you&apos;re ignoring .a files above</span><br><span class="line">!lib.a</span><br><span class="line"></span><br><span class="line"># only ignore the TODO file in the current directory, not subdir/TODO</span><br><span class="line">/TODO</span><br><span class="line"></span><br><span class="line"># ignore all files in the build/ directory</span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"># ignore doc/notes.txt, but not doc/server/arch.txt</span><br><span class="line">doc/*.txt</span><br><span class="line"></span><br><span class="line"># ignore all .pdf files in the doc/ directory and any of its subdirectories</span><br><span class="line">doc/**/*.pdf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Committing Your Changes:</strong> <br><br> Now that your staging area is set up the way you want it, you can commit your changes.</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit</span><br></pre></td></tr></table></figure>
+<p> Git creates your commit with that commit message (with the comments and diff stripped out). The editor displays the following text (this example is a Vim screen):</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &apos;#&apos; will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line"># Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">#</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#	new file:   README</span><br><span class="line">#	modified:   CONTRIBUTING.md</span><br><span class="line">#</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">&quot;.git/COMMIT_EDITMSG&quot; 9L, 283C</span><br></pre></td></tr></table></figure>
+<p> Alternatively, you can type your commit message inline with the commit command by specifying it after a -m flag, like this:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &lt;Your commit message.&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Removing the Files:</strong> <br><br> If you want to remove a file which is from your <strong>tracked files</strong> from git or in other words, remove it from your <strong>staging area</strong>. The <code>git rm &lt;file&gt;</code> does do that, and it means that it will remove the file from your <strong>working directory</strong>, and you can’t see it anymore as an untracked file next time around. Then, if you run git rm, it stages the file’s removal(such as README.md):</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git rm README.md</span><br><span class="line">rm &apos;README..md&apos;</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">deleted:    README.md</span><br></pre></td></tr></table></figure>
+<p> If you want to keep the file in your working directory but remove it from your staging area. In other words, you wanna keep the file on your hard drive but not have git track it anymore. You can use the <code>git rm &lt;file&gt;</code> with <code>--cached</code> flag.</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    git rm --cached &lt;file&gt;</span><br><span class="line">    </span><br><span class="line">7. **Moving Files:** &lt;br&gt;</span><br><span class="line">    Unlike many other VCS systems, Git doesn’t explicitly track file movement. If you **rename a file in Git**, no metadata is stored in Git that tells it you renamed the file. However, Git is pretty smart about figuring that out after the fact — we’ll deal with detecting file movement a bit later.</span><br><span class="line">    If you want to rename a file in git, you can run the command something like this:</span><br></pre></td></tr></table></figure>
+<p> git mv &lt;file_frome/old_filename&gt; &lt;file_to/new_filename&gt;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">However, this is equivalent to running something like this:</span><br></pre></td></tr></table></figure>
+<p> $ mv &lt;file_from&gt; &lt;file_to&gt;<br> $ git rm &lt;file_from&gt;<br> $ git add &lt;file_to&gt;<br><strong><font color="red">Step 3:</font> Working with Remotes on Github</strong> <br></p>
+</li>
+<li><p><strong>Configure your git remote:</strong> <br><br> If you are the first time to use the git’s remote function, you should configure your git such like this:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &lt;Your Name&gt;</span><br><span class="line">git config --global user.email &lt;Your Email&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Showing Your Remotes:</strong><br><br> If you wanna show what remote your git repositories have, you can run <code>git remote -v</code> which shows you the URLs that Git has stored for the shortname to be used when reading and writing to that remote.</p>
+</li>
+<li><p><strong>Adding Remote Repositories:</strong><br><br> There are so many demonstrations which show you add remote called <strong>origin</strong>. But in fact, you would need add remote with yourself shortname you like.So you also can add remotes like this:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add remote &lt;Shortname&gt; &lt;Repository_url&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Pushing to Your Remotes:</strong><br><br> When you finished your project and you wanna share it to <a href="www.github.com">github</a>, you have to push it upstream. The command for this is very simple: <code>git push &lt;remote&gt; &lt;branch&gt;</code>, meaning that it will push your <code>&lt;remote&gt;</code> project upstream to <branch>. If you want to push your master branch to origin server, you can run like this:</branch></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Checkout You branch:</strong><br> Sometime we want to work with other and noninterference, so that you can creat another branch to save new project coping from origin project, and another worker can checkout their branch to hisself work. The eg is like this:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;new_branch&gt;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/uploads/qrcode_for_mlife.jpg" alt="Mikoy Chinese wechat" style="width: 200px; max-width: 100%;">
+  <div>Subscribe my public wechat account by scanning.</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Mikoy Chinese</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://www.mikoychinese.top/post/20180204-Git-s-Notes-And-Records/" title="Git's Notes And Records">https://www.mikoychinese.top/post/20180204-Git-s-Notes-And-Records/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+    
+    <div>
+  		
+    		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><i class="fa fa-heart"></i><br>--------------------　　　ENDING　　　--------------------</div>
+    
+</div>
+
+  		
+	</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/wiki/" rel="tag"># wiki</a>
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/20180209-jetson-tx2-wiki/" rel="prev" title="Jetson TX2 Document">
+                Jetson TX2 Document <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_215x215.jpg" alt="Mikoy Chinese">
+            
+              <p class="site-author-name" itemprop="name">Mikoy Chinese</p>
+              <p class="site-description motion-element" itemprop="description">Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:mikoychinese@gmail.com" title="E-Mail &rarr; mailto:mikoychinese@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/1870977125" title="Weibo &rarr; https://weibo.com/1870977125" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/MikoyChinese" title="Twitter &rarr; https://twitter.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/MikoyChinese" title="GitHub &rarr; https://github.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="310" height="86" src="//music.163.com/outchain/player?type=2&id=32217265&auto=0&height=66"></iframe>
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-The-concepts-of-git"><span class="nav-number">1.</span> <span class="nav-text">1. The concepts of git:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-The-Workflow-of-Github"><span class="nav-number">2.</span> <span class="nav-text">2.The Workflow of Github:</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Author: Mikoy Chinese</span><span class="with-love" id="animate">
+    <i class="fa fa-universal-access" aria-hidden="true"></i>
+  </span>	
+	<a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">冀ICP备18037911 </a>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="/js/src/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'brvTzcxBkkKnhwjC0RIcuOE3-gzGzoHsz',
+    appKey: 'VzRqmqpvEeuGe0J50AUMTQuH',
+    placeholder: 'What about your thinking? Leave a message.',
+    avatar: 'monsterid',
+    meta: guest,
+    pageSize: '5' || 10,
+    visitor: false,
+    lang: 'en' || 'en'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.0"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+  <script>
+	(function(){
+    	var bp = document.createElement('script');
+    	var curProtocol = window.location.protocol.split(':')[0];
+    	if (curProtocol === 'https') {
+        	bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    	}
+    	else {
+        	bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    	}
+    	var s = document.getElementsByTagName("script")[0];
+    	s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>

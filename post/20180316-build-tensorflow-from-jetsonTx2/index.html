@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="fSGiipkUokMYYBgX8kD0bZ8qJTiBzryZ62fvmjZObLk">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="SVyQBgwT88">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/mlife.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'UWUM0IPSUB',
+      apiKey: '38ed7e353834005a3c755dd19dcb6b38',
+      indexName: 'content',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"Search for ...","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1. Preparation： Jetpack 3.2 Download file from JetPack3.2.   Java Bazel">
+<meta name="keywords" content="wiki,Jetson TX2,tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="build_tensorflow_from_jetsonTx2">
+<meta property="og:url" content="https://www.mikoychinese.top/post/20180316-build-tensorflow-from-jetsonTx2/index.html">
+<meta property="og:site_name" content="Mikoy Chinese | 煮酒客">
+<meta property="og:description" content="1. Preparation： Jetpack 3.2 Download file from JetPack3.2.   Java Bazel">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-02-27T08:27:03.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="build_tensorflow_from_jetsonTx2">
+<meta name="twitter:description" content="1. Preparation： Jetpack 3.2 Download file from JetPack3.2.   Java Bazel">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.mikoychinese.top/post/20180316-build-tensorflow-from-jetsonTx2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>build_tensorflow_from_jetsonTx2 | Mikoy Chinese | 煮酒客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikoy Chinese | 煮酒客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">I am the man of fortune, and I must seek my fortune.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.mikoychinese.top/post/20180316-build-tensorflow-from-jetsonTx2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikoy Chinese">
+      <meta itemprop="description" content="Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.">
+      <meta itemprop="image" content="/images/avatar_215x215.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikoy Chinese | 煮酒客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">build_tensorflow_from_jetsonTx2
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-16 19:24:58" itemprop="dateCreated datePublished" datetime="2018-03-16T19:24:58+08:00">2018-03-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-27 16:27:03" itemprop="dateModified" datetime="2019-02-27T16:27:03+08:00">2019-02-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Wiki/" itemprop="url" rel="index"><span itemprop="name">Wiki</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/post/20180316-build-tensorflow-from-jetsonTx2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/20180316-build-tensorflow-from-jetsonTx2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Preparation："><a href="#1-Preparation：" class="headerlink" title="1. Preparation："></a>1. Preparation：</h2><ul>
+<li>Jetpack 3.2<ul>
+<li>Download file from <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank" rel="noopener">JetPack3.2</a>.</li>
+</ul>
+</li>
+<li>Java</li>
+<li>Bazel</li>
+</ul>
+<a id="more"></a>
+<h2 id="2-Installing-Step"><a href="#2-Installing-Step" class="headerlink" title="2. Installing Step:"></a>2. Installing Step:</h2><h4 id="Step-1-Install-JetPack3-2"><a href="#Step-1-Install-JetPack3-2" class="headerlink" title="Step 1: Install JetPack3.2"></a>Step 1: Install JetPack3.2</h4><ul>
+<li>Download this <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank" rel="noopener">file</a> and install like this <a href="http://www.jetsonhacks.com/2017/03/21/jetpack-3-0-nvidia-jetson-tx2-development-kit/" target="_blank" rel="noopener">Url</a>.<h4 id="Step-2-Install-Java"><a href="#Step-2-Install-Java" class="headerlink" title="Step 2: Install Java"></a>Step 2: Install Java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Step-3-Install-More-Stuff"><a href="#Step-3-Install-More-Stuff" class="headerlink" title="Step 3: Install More Stuff"></a>Step 3: Install More Stuff</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># For Python2</span><br><span class="line">sudo apt-get install zip unzip autoconf automake libtool curl zlib1g-dev maven -y</span><br><span class="line">sudo apt-get install python-numpy swig python-dev python-pip python-wheel -y</span><br><span class="line"></span><br><span class="line"># For Python3</span><br><span class="line">sudo apt-get install zip unzip autoconf automake libtool curl zlib1g-dev maven -y</span><br><span class="line">sudo apt-get install python3-numpy swig python3-dev python3-pip python3-wheel -y</span><br></pre></td></tr></table></figure>
+<h4 id="Step-4-Install-Bazel"><a href="#Step-4-Install-Bazel" class="headerlink" title="Step 4: Install Bazel"></a>Step 4: Install Bazel</h4><ul>
+<li>Download the <a href="https://github.com/bazelbuild/bazel/releases/download/0.11.1/bazel-0.11.1-dist.zip" target="_blank" rel="noopener">Bazel-0.11.1-dist</a></li>
+<li><p>Unzip the package</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Up to your download file path.</span><br><span class="line">sudo unzip ./bazel.0.11.1-dist.zip -d ./bazel.0.11.1-dist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Cd bazel-0.11.1-dist</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ./bazel.0.11.1-dist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Start the compilation process by issuing</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./compile.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&emsp;&emsp;If you get the <strong>error</strong> : <code>Closure Rules requires Bazel &gt;=0.4.5 but was 0.11.1</code> , see like this<a href="https://github.com/bazelbuild/bazel/issues/4834" target="_blank" rel="noopener"> bazel#4834</a>. Change all the error file the version 0.4.5 to 0.0.0. Then you will build it successfully.<br><br>&emsp;&emsp;If you get the  <strong>error</strong> : <code>/home/nvidia/.cache/bazel/_bazel_nvidia/d2751a49dacf4cb14a513ec663770624/external/io_bazel_rules_closure/closure/stylesheets/closure_css_library.bzl:27:13: The function &#39;set&#39; has been removed in favor of &#39;depset&#39;, please use the latter. You can temporarily refer to the old &#39;set&#39; constructor from unexecuted code by using --incompatible_disallow_uncalled_set_constructor=false</code> , see like this issue <a href="https://github.com/bazelbuild/bazel/issues/4828" target="_blank" rel="noopener">bazel#4828</a>. Build it again in another time.</p>
+<ul>
+<li>Copy the build to your system bin folder<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp output/bazel /usr/local/bin</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Step-5-Configure-Tensorflow-and-build"><a href="#Step-5-Configure-Tensorflow-and-build" class="headerlink" title="Step 5: Configure Tensorflow and build"></a>Step 5: Configure Tensorflow and build</h4><ul>
+<li><p>Download Tensorflow1.5.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#Download From https://github.com/tensorflow/tensorflow.git</span><br><span class="line">git clone https://github.com/tensorflow/tensorflow.git</span><br><span class="line">cd ./tensorflow</span><br><span class="line">git checkout v1.5.0</span><br><span class="line"># Change some INFO for Jetson TX</span><br><span class="line">sudo gedit tensorflow/stream_executor/cuda/cuda_gpu_executor.cc</span><br><span class="line">#In the function static intTryToReadNumaNode(conststring &amp;pci_bus_id,intdevice_ordinal)add the following lines at the start of the function. </span><br><span class="line">#ADD just like this(you add it into you edit file where the function is.):</span><br><span class="line">    LOG(INFO) &lt;&lt; &quot;ARM has no NUMA node, hardcoding to return zero&quot;;</span><br><span class="line">    return 0;</span><br><span class="line">#Then cp the cudnn.h</span><br><span class="line">sudo mkdir /usr/lib/aarch64-linux-gnu/include/</span><br><span class="line">sudo cp /usr/include/cudnn.h /usr/lib/aarch64-linux-gnu/include/cudnn.h</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Configure Tensorflow</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">#Then configure it what you need. There are my options.</span><br><span class="line">Please specify the location of python. [Default is /usr/bin/python]: /usr/bin/python3</span><br><span class="line">Please specify optimization flags to use during compilation [Default is -march=native]: </span><br><span class="line">Do you wish to use jemalloc as the malloc implementation? (Linux only) [Y/n] y</span><br><span class="line">jemalloc enabled on Linux</span><br><span class="line">Do you wish to build TensorFlow with Google Cloud Platform support? [y/N] n</span><br><span class="line">No Google Cloud Platform support will be enabled for TensorFlow</span><br><span class="line">Do you wish to build TensorFlow with Hadoop File System support? [y/N] n</span><br><span class="line">No Hadoop File System support will be enabled for TensorFlow</span><br><span class="line">Do you wish to build TensorFlow with the XLA just-in-time compiler (experimental)? [y/N] n</span><br><span class="line">XLA JIT support will be enabled for TensorFlow</span><br><span class="line">Found possible Python library paths:</span><br><span class="line">  /usr/local/lib/python2.7/dist-packages</span><br><span class="line">  /usr/lib/python2.7/dist-packages</span><br><span class="line">Please input the desired Python library path to use.  Default is [/usr/local/lib/python3/dist-packages]</span><br><span class="line"></span><br><span class="line">Using python library path: /usr/local/lib/python2.7/dist-packages</span><br><span class="line">Do you wish to build TensorFlow with OpenCL support? [y/N] n</span><br><span class="line">No OpenCL support will be enabled for TensorFlow</span><br><span class="line">Do you wish to build TensorFlow with CUDA support? [y/N] y</span><br><span class="line">CUDA support will be enabled for TensorFlow</span><br><span class="line">Please specify which gcc should be used by nvcc as the host compiler. [Default is /usr/bin/gcc]: </span><br><span class="line">Please specify the CUDA SDK version you want to use, e.g. 7.0. [Leave empty to use system default]: 7.0.5</span><br><span class="line">Please specify the location where CUDA  toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: </span><br><span class="line">Please specify the Cudnn version you want to use. [Leave empty to use system default]: </span><br><span class="line">Please specify the location where cuDNN  library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: /usr/lib/aarch64-linux-gnu</span><br><span class="line">Please specify a list of comma-separated Cuda compute capabilities you want to build with.</span><br><span class="line">You can find the compute capability of your device at: https://developer.nvidia.com/cuda-gpus.</span><br><span class="line">Please note that each additional compute capability significantly increases your build time and binary size.</span><br><span class="line">Extracting Bazel installation...</span><br><span class="line">.......................</span><br><span class="line">INFO: Starting clean (this may take a while). Consider using --expunge_async if the clean takes more than several minutes.</span><br><span class="line">.......................</span><br><span class="line">INFO: All external dependencies fetched successfully.</span><br><span class="line">Configuration finished</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Once your configuration is done, run like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bazel build -c opt --local_resources 3072,4.0,1.0 --verbose_failures --config=cuda //tensorflow/tools/pip_package:build_pip_package</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Once Tensorflow is compiled, build the pip package:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Move the pip wheel from the tmp directory if you want to save it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /tmp/tensorflow_pkg/tensorflow-1.5.0-cp35-cp35mu-linux_aarch64.whl $HOME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Install the pip wheel:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install $HOME/tensorflow-1.5.0-cp35-cp35mu-linux_aarch64.whl</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-Test-the-Tensorflow"><a href="#3-Test-the-Tensorflow" class="headerlink" title="3. Test the Tensorflow"></a>3. Test the Tensorflow</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line">import tensorflow as tf</span><br><span class="line">tf.__version__</span><br><span class="line">&gt;&gt;1.5.0</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/uploads/qrcode_for_mlife.jpg" alt="Mikoy Chinese wechat" style="width: 200px; max-width: 100%;">
+  <div>Subscribe my public wechat account by scanning.</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Mikoy Chinese</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://www.mikoychinese.top/post/20180316-build-tensorflow-from-jetsonTx2/" title="build_tensorflow_from_jetsonTx2">https://www.mikoychinese.top/post/20180316-build-tensorflow-from-jetsonTx2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+    
+    <div>
+  		
+    		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><i class="fa fa-heart"></i><br>--------------------　　　ENDING　　　--------------------</div>
+    
+</div>
+
+  		
+	</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/wiki/" rel="tag"># wiki</a>
+          
+            <a href="/tags/Jetson-TX2/" rel="tag"># Jetson TX2</a>
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/20180209-jetson-tx2-wiki/" rel="next" title="Jetson TX2 Document">
+                <i class="fa fa-chevron-left"></i> Jetson TX2 Document
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/20180825-Logging-Muti-Progress/" rel="prev" title="Logging Muti-Progress">
+                Logging Muti-Progress <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_215x215.jpg" alt="Mikoy Chinese">
+            
+              <p class="site-author-name" itemprop="name">Mikoy Chinese</p>
+              <p class="site-description motion-element" itemprop="description">Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:mikoychinese@gmail.com" title="E-Mail &rarr; mailto:mikoychinese@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/1870977125" title="Weibo &rarr; https://weibo.com/1870977125" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/MikoyChinese" title="Twitter &rarr; https://twitter.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/MikoyChinese" title="GitHub &rarr; https://github.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="310" height="86" src="//music.163.com/outchain/player?type=2&id=32217265&auto=0&height=66"></iframe>
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Preparation："><span class="nav-number">1.</span> <span class="nav-text">1. Preparation：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Installing-Step"><span class="nav-number">2.</span> <span class="nav-text">2. Installing Step:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1-Install-JetPack3-2"><span class="nav-number">2.0.1.</span> <span class="nav-text">Step 1: Install JetPack3.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-Install-Java"><span class="nav-number">2.0.2.</span> <span class="nav-text">Step 2: Install Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-3-Install-More-Stuff"><span class="nav-number">2.0.3.</span> <span class="nav-text">Step 3: Install More Stuff</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-4-Install-Bazel"><span class="nav-number">2.0.4.</span> <span class="nav-text">Step 4: Install Bazel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-5-Configure-Tensorflow-and-build"><span class="nav-number">2.0.5.</span> <span class="nav-text">Step 5: Configure Tensorflow and build</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Test-the-Tensorflow"><span class="nav-number">3.</span> <span class="nav-text">3. Test the Tensorflow</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Author: Mikoy Chinese</span><span class="with-love" id="animate">
+    <i class="fa fa-universal-access" aria-hidden="true"></i>
+  </span>	
+	<a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">冀ICP备18037911 </a>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="/js/src/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'brvTzcxBkkKnhwjC0RIcuOE3-gzGzoHsz',
+    appKey: 'VzRqmqpvEeuGe0J50AUMTQuH',
+    placeholder: 'What about your thinking? Leave a message.',
+    avatar: 'monsterid',
+    meta: guest,
+    pageSize: '5' || 10,
+    visitor: false,
+    lang: 'en' || 'en'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.0"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+  <script>
+	(function(){
+    	var bp = document.createElement('script');
+    	var curProtocol = window.location.protocol.split(':')[0];
+    	if (curProtocol === 'https') {
+        	bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    	}
+    	else {
+        	bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    	}
+    	var s = document.getElementsByTagName("script")[0];
+    	s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>

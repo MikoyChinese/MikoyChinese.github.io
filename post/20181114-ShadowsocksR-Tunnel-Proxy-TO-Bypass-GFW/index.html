@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="fSGiipkUokMYYBgX8kD0bZ8qJTiBzryZ62fvmjZObLk">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="SVyQBgwT88">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/mlife.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'UWUM0IPSUB',
+      apiKey: '38ed7e353834005a3c755dd19dcb6b38',
+      indexName: 'content',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"Search for ...","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Introduction:This is a fast tunnel proxy can help you visit all the website outside wall, such like google.com, youtube.com, facebook.com, etc. Thank for the github.com @breakwa11. Note: If you have a">
+<meta name="keywords" content="wiki,shadowsocksr,proxy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ShadowsocksR Tunnel Proxy TO Bypass GFW">
+<meta property="og:url" content="https://www.mikoychinese.top/post/20181114-ShadowsocksR-Tunnel-Proxy-TO-Bypass-GFW/index.html">
+<meta property="og:site_name" content="Mikoy Chinese | 煮酒客">
+<meta property="og:description" content="Introduction:This is a fast tunnel proxy can help you visit all the website outside wall, such like google.com, youtube.com, facebook.com, etc. Thank for the github.com @breakwa11. Note: If you have a">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://pic.yupoo.com/starplex/FJurGILM/medish.jpg">
+<meta property="og:updated_time" content="2019-02-27T08:47:02.011Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ShadowsocksR Tunnel Proxy TO Bypass GFW">
+<meta name="twitter:description" content="Introduction:This is a fast tunnel proxy can help you visit all the website outside wall, such like google.com, youtube.com, facebook.com, etc. Thank for the github.com @breakwa11. Note: If you have a">
+<meta name="twitter:image" content="http://pic.yupoo.com/starplex/FJurGILM/medish.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.mikoychinese.top/post/20181114-ShadowsocksR-Tunnel-Proxy-TO-Bypass-GFW/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ShadowsocksR Tunnel Proxy TO Bypass GFW | Mikoy Chinese | 煮酒客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikoy Chinese | 煮酒客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">I am the man of fortune, and I must seek my fortune.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.mikoychinese.top/post/20181114-ShadowsocksR-Tunnel-Proxy-TO-Bypass-GFW/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikoy Chinese">
+      <meta itemprop="description" content="Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.">
+      <meta itemprop="image" content="/images/avatar_215x215.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikoy Chinese | 煮酒客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ShadowsocksR Tunnel Proxy TO Bypass GFW
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-14 16:29:02" itemprop="dateCreated datePublished" datetime="2018-11-14T16:29:02+08:00">2018-11-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-27 16:47:02" itemprop="dateModified" datetime="2019-02-27T16:47:02+08:00">2019-02-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Wiki/" itemprop="url" rel="index"><span itemprop="name">Wiki</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/post/20181114-ShadowsocksR-Tunnel-Proxy-TO-Bypass-GFW/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/20181114-ShadowsocksR-Tunnel-Proxy-TO-Bypass-GFW/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction:"></a>Introduction:</h2><p>This is a fast tunnel proxy can help you visit all the website outside wall, such like google.com, youtube.com, facebook.com, etc. Thank for the github.com <a href="https://github.com/breakwa11" target="_blank" rel="noopener">@breakwa11</a>.</p>
+<p><strong>Note:</strong> If you have any questions about this, you can find the answer from <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> or <a href="http://vps.bcoder.cn/" target="_blank" rel="noopener">@逗比根据地</a>. Enjoy your trip, it will take you into the world Net.</p>
+<a id="more"></a>
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server:"></a>Server:</h2><ol>
+<li>Purchase a VPS [Ubuntu 14 Enough]</li>
+<li>Enter your VPS to configurate it such like this:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install the git. </span></span><br><span class="line">sudo apt-get install git -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># Github URL&lt;https://github.com/teddysun/shadowsocks_install.git&gt;</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/teddysun/shadowsocks_install.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># Enter the folder.</span></span><br><span class="line"><span class="built_in">cd</span> ./shadowsocks_install/</span><br><span class="line">chmod +x ./shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#######CONFIG FIle######</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>, <span class="comment"># Input Server IP</span></span><br><span class="line">    <span class="string">"server_ipv6"</span>: <span class="string">"[::]"</span>,</span><br><span class="line">    <span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:1080,</span><br><span class="line">    <span class="string">"port_password"</span>:&#123;</span><br><span class="line">        <span class="string">"9000"</span>:<span class="string">"password0"</span>,</span><br><span class="line">        <span class="string">"9001"</span>:<span class="string">"password1"</span>,</span><br><span class="line">        <span class="string">"9002"</span>:<span class="string">"password2"</span>,</span><br><span class="line">        <span class="string">"9003"</span>:<span class="string">"password3"</span>,</span><br><span class="line">        <span class="string">"9004"</span>:<span class="string">"password4"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"timeout"</span>:300,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>,</span><br><span class="line">    <span class="string">"protocol"</span>: <span class="string">"auth_chain_a"</span>,</span><br><span class="line">    <span class="string">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"obfs"</span>: <span class="string">"plain"</span>,</span><br><span class="line">    <span class="string">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"fast_open"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"workers"</span>: 1</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Start on Background.</span></span><br><span class="line">./logrun.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start up with OS on:</span></span><br><span class="line">chmod +x /etc/rc.local</span><br><span class="line">vi /etc/rc.local</span><br><span class="line"><span class="comment"># appent on the end line</span></span><br><span class="line">/bin/bash /usr/<span class="built_in">local</span>/shadowsocks/logrun.sh</span><br></pre></td></tr></table></figure>
+<h2 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h2><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux:"></a>Linux:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Clone the repository from github.com</span><br><span class="line">git clone https://github.com/ssrbackup/shadowsocksr.git</span><br><span class="line"># Edit the config file.</span><br><span class="line">cd ./shadowsocksr</span><br><span class="line">gedit ./config.json</span><br><span class="line"># As same as the server.</span><br><span class="line">cp ./config.json /etc/shadowsocks.json</span><br><span class="line"># Start SSR service &lt;Current Path: ./shadowsocksr/shadowsocks/&gt;</span><br><span class="line"># Start by config file:</span><br><span class="line">cd ./shadowsocks</span><br><span class="line">python local.py -c /etc/shadowsocks.json -d start/stop/restart</span><br></pre></td></tr></table></figure>
+<h3 id="Android-IOS-Windows"><a href="#Android-IOS-Windows" class="headerlink" title="Android/IOS/Windows:"></a>Android/IOS/Windows:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Download the app which can run ShadowsocksR on your device.</span><br><span class="line">链接: https://pan.baidu.com/s/1wsUbHvy_hnRYB-zAePRc6w 提取码: 343y </span><br><span class="line"></span><br><span class="line"># Configurate file.</span><br><span class="line">As same as server.</span><br></pre></td></tr></table></figure>
+<h3 id="Global-Agent-with-Linux-and-ShadowsocksR"><a href="#Global-Agent-with-Linux-and-ShadowsocksR" class="headerlink" title="Global Agent with Linux and ShadowsocksR:"></a>Global Agent with Linux and ShadowsocksR:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># Install privoxy</span><br><span class="line">sudo apt-get install privoxy</span><br><span class="line">sudo gedit /etc/privoxy/config</span><br><span class="line"># Annotate this line</span><br><span class="line"># listen-address localhost:8118</span><br><span class="line"></span><br><span class="line"># Append this two line at end.</span><br><span class="line">forward-socks5 / 127.0.0.1:1080 . # This line has a dot(.), don&apos;t ignore it.</span><br><span class="line">listen-address 127.0.0.1:8118</span><br><span class="line"></span><br><span class="line"># Config the global agent http proxy.</span><br><span class="line">sudo gedit /etc/environment</span><br><span class="line"># Append this line at end.</span><br><span class="line">export http_proxy=http://127.0.0.1:8118</span><br><span class="line">export https_proxy=https://127.0.0.1:8118</span><br></pre></td></tr></table></figure>
+<h3 id="Chrome-SwitchyOmega"><a href="#Chrome-SwitchyOmega" class="headerlink" title="Chrome SwitchyOmega:"></a>Chrome SwitchyOmega:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Github: https://github.com/FelisCatus/SwitchyOmega/releases</span><br><span class="line">Website: http://proxy.expand.ejcms.com/</span><br></pre></td></tr></table></figure>
+<center><br><br><img src="http://pic.yupoo.com/starplex/FJurGILM/medish.jpg" alt="image"><br><br></center>
+
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/uploads/qrcode_for_mlife.jpg" alt="Mikoy Chinese wechat" style="width: 200px; max-width: 100%;">
+  <div>Subscribe my public wechat account by scanning.</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Mikoy Chinese</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://www.mikoychinese.top/post/20181114-ShadowsocksR-Tunnel-Proxy-TO-Bypass-GFW/" title="ShadowsocksR Tunnel Proxy TO Bypass GFW">https://www.mikoychinese.top/post/20181114-ShadowsocksR-Tunnel-Proxy-TO-Bypass-GFW/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+    
+    <div>
+  		
+    		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><i class="fa fa-heart"></i><br>--------------------　　　ENDING　　　--------------------</div>
+    
+</div>
+
+  		
+	</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/wiki/" rel="tag"># wiki</a>
+          
+            <a href="/tags/shadowsocksr/" rel="tag"># shadowsocksr</a>
+          
+            <a href="/tags/proxy/" rel="tag"># proxy</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/20181014-yuebao-webank-moneyFund-profit/" rel="next" title="余额宝、微众银行、货币基金收益比对分析">
+                <i class="fa fa-chevron-left"></i> 余额宝、微众银行、货币基金收益比对分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/20181117-book-gangxingpaomo-2/" rel="prev" title="观止 |《刚性泡沫》">
+                观止 |《刚性泡沫》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_215x215.jpg" alt="Mikoy Chinese">
+            
+              <p class="site-author-name" itemprop="name">Mikoy Chinese</p>
+              <p class="site-description motion-element" itemprop="description">Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:mikoychinese@gmail.com" title="E-Mail &rarr; mailto:mikoychinese@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/1870977125" title="Weibo &rarr; https://weibo.com/1870977125" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/MikoyChinese" title="Twitter &rarr; https://twitter.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/MikoyChinese" title="GitHub &rarr; https://github.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="310" height="86" src="//music.163.com/outchain/player?type=2&id=32217265&auto=0&height=66"></iframe>
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server"><span class="nav-number">2.</span> <span class="nav-text">Server:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Client"><span class="nav-number">3.</span> <span class="nav-text">Client</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux"><span class="nav-number">3.1.</span> <span class="nav-text">Linux:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-IOS-Windows"><span class="nav-number">3.2.</span> <span class="nav-text">Android/IOS/Windows:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-Agent-with-Linux-and-ShadowsocksR"><span class="nav-number">3.3.</span> <span class="nav-text">Global Agent with Linux and ShadowsocksR:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chrome-SwitchyOmega"><span class="nav-number">3.4.</span> <span class="nav-text">Chrome SwitchyOmega:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Author: Mikoy Chinese</span><span class="with-love" id="animate">
+    <i class="fa fa-universal-access" aria-hidden="true"></i>
+  </span>	
+	<a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">冀ICP备18037911 </a>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="/js/src/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'brvTzcxBkkKnhwjC0RIcuOE3-gzGzoHsz',
+    appKey: 'VzRqmqpvEeuGe0J50AUMTQuH',
+    placeholder: 'What about your thinking? Leave a message.',
+    avatar: 'monsterid',
+    meta: guest,
+    pageSize: '5' || 10,
+    visitor: false,
+    lang: 'en' || 'en'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.0"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+  <script>
+	(function(){
+    	var bp = document.createElement('script');
+    	var curProtocol = window.location.protocol.split(':')[0];
+    	if (curProtocol === 'https') {
+        	bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    	}
+    	else {
+        	bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    	}
+    	var s = document.getElementsByTagName("script")[0];
+    	s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>

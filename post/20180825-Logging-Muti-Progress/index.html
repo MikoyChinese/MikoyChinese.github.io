@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="fSGiipkUokMYYBgX8kD0bZ8qJTiBzryZ62fvmjZObLk">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="SVyQBgwT88">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/mlife.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'UWUM0IPSUB',
+      apiKey: '38ed7e353834005a3c755dd19dcb6b38',
+      indexName: 'content',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"Search for ...","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Introduction:&amp;emsp;&amp;emsp;Recently, I have tried to record some infomations occurred during progress running automatically. Because the main language is Python, so I choose the logging module to achiev">
+<meta name="keywords" content="wiki,python,logging">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logging Muti-Progress">
+<meta property="og:url" content="https://www.mikoychinese.top/post/20180825-Logging-Muti-Progress/index.html">
+<meta property="og:site_name" content="Mikoy Chinese | 煮酒客">
+<meta property="og:description" content="Introduction:&amp;emsp;&amp;emsp;Recently, I have tried to record some infomations occurred during progress running automatically. Because the main language is Python, so I choose the logging module to achiev">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-02-27T08:47:11.143Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Logging Muti-Progress">
+<meta name="twitter:description" content="Introduction:&amp;emsp;&amp;emsp;Recently, I have tried to record some infomations occurred during progress running automatically. Because the main language is Python, so I choose the logging module to achiev">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.mikoychinese.top/post/20180825-Logging-Muti-Progress/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Logging Muti-Progress | Mikoy Chinese | 煮酒客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikoy Chinese | 煮酒客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">I am the man of fortune, and I must seek my fortune.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.mikoychinese.top/post/20180825-Logging-Muti-Progress/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikoy Chinese">
+      <meta itemprop="description" content="Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.">
+      <meta itemprop="image" content="/images/avatar_215x215.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikoy Chinese | 煮酒客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Logging Muti-Progress
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-25 16:32:18" itemprop="dateCreated datePublished" datetime="2018-08-25T16:32:18+08:00">2018-08-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-27 16:47:11" itemprop="dateModified" datetime="2019-02-27T16:47:11+08:00">2019-02-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Wiki/" itemprop="url" rel="index"><span itemprop="name">Wiki</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/post/20180825-Logging-Muti-Progress/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/20180825-Logging-Muti-Progress/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction:"></a>Introduction:</h2><p>&emsp;&emsp;Recently, I have tried to record some infomations occurred during progress running automatically. Because the main language is <strong>Python</strong>, so I choose the <strong>logging</strong> module to achieve it.</p>
+<a id="more"></a>
+<p>&emsp;&emsp;Firstly, I can record log when I use logging module. But when I tried to write log infomation two times or more, I found that the log file will be re-written with cleaning up all my infomation written last time. And then I have tested it by making two progress to write log infomating using logging module to one log file. This time I found that if the two progresses write infomation at the same time, Python Global Interpreter Lock(<strong>GIL</strong>)  will prevent multiple progress form executing the I/O operations. So the fact is just one progress writted log infomation in log file.</p>
+<p>&emsp;&emsp;But why the log file will be cleaned up? I searched my question in google and found the result. Because the logging module include <strong>class TimedRotatingFileHandler(BaseRotatingHandler)</strong>, and we see it sources code, strengthen the reson code:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def doRollover(self):</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    dfn = self.rotation_filename(self.baseFilename + &quot;.&quot; +</span><br><span class="line">                                     time.strftime(self.suffix, timeTuple))</span><br><span class="line">    if os.path.exists(dfn):</span><br><span class="line">        os.remove(dfn)</span><br><span class="line">    self.rotate(self.baseFilename, dfn)</span><br><span class="line">    if self.backupCount &gt; 0:</span><br><span class="line">        for s in self.getFilesToDelete():</span><br><span class="line">            os.remove(s)        </span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;As you see, it will remove the log file if it existed. So we try to create a class like <strong>TimedRotatingFileHandler</strong>, but support for <strong>Muti-Progress</strong>.</p>
+<h3 id="The-coding-thinking"><a href="#The-coding-thinking" class="headerlink" title="The coding thinking:"></a>The coding thinking:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">a[Log file Request] --&gt; b&#123;shouldRollover?&#125;</span><br><span class="line">b --&gt;|True| c[Create a new log file]</span><br><span class="line">b --&gt;|False| d[file.stream.close]</span><br><span class="line">d --&gt;f[open log file]</span><br><span class="line">f --&gt; g[if file exists, create a symlink to the currentTime log file and make the I/O stream point it.]</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;When a progress request I/O operation, firstly judge it whether should Rollover? <code>if this log file is the currenttime file you want to record it.</code> if is True return True, while False return False. And the doRollover receive the parameter to do rollover. When it rollover, it makes a symlink pointing to the current time file and then record it.</p>
+<h3 id="The-main-code"><a href="#The-main-code" class="headerlink" title="The main code:"></a>The main code:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">def shouldRollover(self, record):</span><br><span class="line">        if self.currentFileName != self._compute_fn():</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def _open(self):</span><br><span class="line">        if self.encoding is None:</span><br><span class="line">            stream = open(self.currentFileName, self.mode)</span><br><span class="line">        else:</span><br><span class="line">            stream = codecs.open(self.currentFileName, self.mode, self.encoding)</span><br><span class="line">        # simulate file name structure of `logging.TimedRotatingFileHandler`</span><br><span class="line">        if os.path.exists(self.baseFilename):</span><br><span class="line">            try:</span><br><span class="line">                os.remove(self.baseFilename)</span><br><span class="line">            except OSError:</span><br><span class="line">                pass</span><br><span class="line">        try:</span><br><span class="line">            # Create the symlink point the lastest log file.</span><br><span class="line">            os.symlink(self.currentFileName, self.baseFilename)</span><br><span class="line">        except OSError:</span><br><span class="line">            pass</span><br><span class="line">        return stream</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="The-whole-source-code"><a href="#The-whole-source-code" class="headerlink" title="The whole source code:"></a>The whole source code:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">class MultiProcessSafeDailyRotatingFileHandler(BaseRotatingHandler):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Similar with `logging.TimedRotatingFileHandler`, while this one is</span><br><span class="line">    - Multi process safe</span><br><span class="line">    - Rotate at midnight only</span><br><span class="line">    - Utc not supported</span><br><span class="line">    - This log will create day by day.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init__(self, filename, encoding=None, delay=False, utc=False, **kwargs):</span><br><span class="line">        self.utc = utc</span><br><span class="line">        self.suffix = &quot;%Y%m%d&quot;</span><br><span class="line">        self.baseFilename = os.path.abspath(filename)</span><br><span class="line">        self.currentFileName = self._compute_fn()</span><br><span class="line">        BaseRotatingHandler.__init__(self, filename, &apos;a&apos;, encoding, delay)</span><br><span class="line"></span><br><span class="line">    def shouldRollover(self, record):</span><br><span class="line">        if self.currentFileName != self._compute_fn():</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    def doRollover(self):</span><br><span class="line">        if self.stream:</span><br><span class="line">            self.stream.close()</span><br><span class="line">            self.stream = None</span><br><span class="line">        self.currentFileName = self._compute_fn()</span><br><span class="line"></span><br><span class="line">    def _compute_fn(self):</span><br><span class="line">        return self.baseFilename + &quot;.&quot; + time.strftime(self.suffix, time.localtime())</span><br><span class="line"></span><br><span class="line">    def _open(self):</span><br><span class="line">        if self.encoding is None:</span><br><span class="line">            stream = open(self.currentFileName, self.mode)</span><br><span class="line">        else:</span><br><span class="line">            stream = codecs.open(self.currentFileName, self.mode, self.encoding)</span><br><span class="line">        # simulate file name structure of `logging.TimedRotatingFileHandler`</span><br><span class="line">        if os.path.exists(self.baseFilename):</span><br><span class="line">            try:</span><br><span class="line">                os.remove(self.baseFilename)</span><br><span class="line">            except OSError:</span><br><span class="line">                pass</span><br><span class="line">        try:</span><br><span class="line">            # Create the symlink point the lastest log file.</span><br><span class="line">            os.symlink(self.currentFileName, self.baseFilename)</span><br><span class="line">        except OSError:</span><br><span class="line">            pass</span><br><span class="line">        return stream</span><br></pre></td></tr></table></figure>
+<h2 id="Finally"><a href="#Finally" class="headerlink" title="Finally"></a>Finally</h2><p>&emsp;&emsp;Let me tell you some usages of logging module: This module defines functions and classes which implement a flexible event logging system for applications and libraries. The key benefit of having the logging API provided by a standard library module is that all Python modules can participate in logging, so your application log can include your own messages integrated with messages from third-party modules.</p>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h3><p>logger –&gt; handler –&gt; formatter –&gt; output</p>
+<ol>
+<li><p>Create logger</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logger = logging.getLogger(&apos;user&apos;)</span><br><span class="line">logger.setLevel(&apos;DEBUG&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Create handler and set leverl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    handler = logging.StreamHandler()</span><br><span class="line">    handler.setLevel(&apos;DEBUG&apos;)</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Create formatter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">handler.setFormatter(&apos;%(levelname)s: %(message)s&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Add to logger</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger.addHandler(handler)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="My-simple"><a href="#My-simple" class="headerlink" title="My simple:"></a>My simple:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">    Author: Mikoy</span><br><span class="line">    Github: github.com/MikoyChinese</span><br><span class="line">    The name of the log file changes automatically based on time.</span><br><span class="line">    LOGGING_CONFIG: the config file about the logging.</span><br><span class="line">    &lt;logging.config.dictConfig&gt;: such like next,</span><br><span class="line">    logger --&gt; handler --&gt; formatter --&gt; output</span><br><span class="line">    # Create logger</span><br><span class="line">    logger = logging.getLogger(&apos;user&apos;)</span><br><span class="line">    logger.setLevel(&apos;DEBUG&apos;)</span><br><span class="line">    # Create handler and set leverl</span><br><span class="line">    handler = logging.StreamHandler()</span><br><span class="line">    handler.setLevel(&apos;DEBUG&apos;)</span><br><span class="line">    # Create formatter</span><br><span class="line">    handler.setFormatter(&apos;%(levelname)s: %(message)s&apos;)</span><br><span class="line">    # Add to logger</span><br><span class="line">    logger.addHandler(handler)</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from logging.handlers import BaseRotatingHandler</span><br><span class="line">import os, time, codecs, logging, logging.config</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyLogging(object):</span><br><span class="line">    def __init__(self, logger_name=&apos;user&apos;):</span><br><span class="line">        # 1.The configuration below has no file to output.</span><br><span class="line">        self.LOGGING_CONFIG = &#123;</span><br><span class="line">            &apos;version&apos;: 1,</span><br><span class="line">            &apos;disable_existing_loggers&apos;: False,</span><br><span class="line">            &apos;formatters&apos;: &#123;</span><br><span class="line">                &apos;standard&apos;: &#123;</span><br><span class="line">                    &apos;format&apos;: &apos;[%(levelname)s] %(asctime)s %(module)s %(&apos;</span><br><span class="line">                              &apos;process)d %(thread)d: %(message)s&apos;,</span><br><span class="line">                    &apos;datefmt&apos;: &apos;%H:%M:%S&apos;</span><br><span class="line">                &#125;,</span><br><span class="line">                &apos;simple&apos;: &#123;</span><br><span class="line">                    &apos;format&apos;: &apos;[%(levelname)s]: %(message)s&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &apos;handlers&apos;: &#123;</span><br><span class="line">                &apos;console&apos;: &#123;</span><br><span class="line">                    &apos;level&apos;: &apos;DEBUG&apos;,</span><br><span class="line">                    &apos;class&apos;: &apos;logging.StreamHandler&apos;,</span><br><span class="line">                    &apos;formatter&apos;: &apos;simple&apos;</span><br><span class="line">                &#125;,</span><br><span class="line">                &apos;default&apos;: &#123;</span><br><span class="line">                    &apos;level&apos;: &apos;DEBUG&apos;,</span><br><span class="line">                    &apos;class&apos;: &apos;loggingModule.MultiProcessSafeDailyRotatingFileHandler&apos;,</span><br><span class="line">                    &apos;formatter&apos;: &apos;standard&apos;,</span><br><span class="line">                    &apos;filename&apos;: &apos;./log/info.log&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &apos;loggers&apos;: &#123;</span><br><span class="line">                &apos;user&apos;: &#123;</span><br><span class="line">                    &apos;level&apos;: &apos;DEBUG&apos;,</span><br><span class="line">                    &apos;handlers&apos;: [&apos;console&apos;, &apos;default&apos;]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        # 2. To get the absolute path of the log file.</span><br><span class="line">        # Log file is stored under the &apos;log&apos; folder. If it not existed,</span><br><span class="line">        # create it auto.</span><br><span class="line">        dir_path = os.path.join(os.path.dirname(__file__), &apos;log&apos;)</span><br><span class="line">        if not os.path.exists(dir_path):</span><br><span class="line">            os.makedirs(dir_path)</span><br><span class="line">        # 3. Loading the config, and make it effect.</span><br><span class="line">        # This command can not be executed after the logging.getLogger function</span><br><span class="line">        # because there is no specific logger name.</span><br><span class="line">        logging.config.dictConfig(self.LOGGING_CONFIG)</span><br><span class="line">        self.logger = logging.getLogger(logger_name)  # return a logger</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MultiProcessSafeDailyRotatingFileHandler(BaseRotatingHandler):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Similar with `logging.TimedRotatingFileHandler`, while this one is</span><br><span class="line">    - Multi process safe</span><br><span class="line">    - Rotate at midnight only</span><br><span class="line">    - Utc not supported</span><br><span class="line">    - This log will create day by day.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init__(self, filename, encoding=None, delay=False, utc=False, **kwargs):</span><br><span class="line">        self.utc = utc</span><br><span class="line">        self.suffix = &quot;%Y%m%d&quot;</span><br><span class="line">        self.baseFilename = os.path.abspath(filename)</span><br><span class="line">        self.currentFileName = self._compute_fn()</span><br><span class="line">        BaseRotatingHandler.__init__(self, filename, &apos;a&apos;, encoding, delay)</span><br><span class="line"></span><br><span class="line">    def shouldRollover(self, record):</span><br><span class="line">        if self.currentFileName != self._compute_fn():</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    def doRollover(self):</span><br><span class="line">        if self.stream:</span><br><span class="line">            self.stream.close()</span><br><span class="line">            self.stream = None</span><br><span class="line">        self.currentFileName = self._compute_fn()</span><br><span class="line"></span><br><span class="line">    def _compute_fn(self):</span><br><span class="line">        return self.baseFilename + &quot;.&quot; + time.strftime(self.suffix, time.localtime())</span><br><span class="line"></span><br><span class="line">    def _open(self):</span><br><span class="line">        if self.encoding is None:</span><br><span class="line">            stream = open(self.currentFileName, self.mode)</span><br><span class="line">        else:</span><br><span class="line">            stream = codecs.open(self.currentFileName, self.mode, self.encoding)</span><br><span class="line">        # simulate file name structure of `logging.TimedRotatingFileHandler`</span><br><span class="line">        if os.path.exists(self.baseFilename):</span><br><span class="line">            try:</span><br><span class="line">                os.remove(self.baseFilename)</span><br><span class="line">            except OSError:</span><br><span class="line">                pass</span><br><span class="line">        try:</span><br><span class="line">            # Create the symlink point the lastest log file.</span><br><span class="line">            os.symlink(self.currentFileName, self.baseFilename)</span><br><span class="line">        except OSError:</span><br><span class="line">            pass</span><br><span class="line">        return stream</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    mylogging = MyLogging(logger_name=&apos;user&apos;)  # This is a customized class;</span><br><span class="line">    while 1:</span><br><span class="line">        mylogging.logger.debug(&apos;%s&apos; % time.time())</span><br><span class="line">        time.sleep(5)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/uploads/qrcode_for_mlife.jpg" alt="Mikoy Chinese wechat" style="width: 200px; max-width: 100%;">
+  <div>Subscribe my public wechat account by scanning.</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Mikoy Chinese</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://www.mikoychinese.top/post/20180825-Logging-Muti-Progress/" title="Logging Muti-Progress">https://www.mikoychinese.top/post/20180825-Logging-Muti-Progress/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+    
+    <div>
+  		
+    		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><i class="fa fa-heart"></i><br>--------------------　　　ENDING　　　--------------------</div>
+    
+</div>
+
+  		
+	</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/wiki/" rel="tag"># wiki</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/logging/" rel="tag"># logging</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/20180316-build-tensorflow-from-jetsonTx2/" rel="next" title="build_tensorflow_from_jetsonTx2">
+                <i class="fa fa-chevron-left"></i> build_tensorflow_from_jetsonTx2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/20180826-book_gangxingpaomo_1/" rel="prev" title="初阅之刚性泡沫">
+                初阅之刚性泡沫 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_215x215.jpg" alt="Mikoy Chinese">
+            
+              <p class="site-author-name" itemprop="name">Mikoy Chinese</p>
+              <p class="site-description motion-element" itemprop="description">Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:mikoychinese@gmail.com" title="E-Mail &rarr; mailto:mikoychinese@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/1870977125" title="Weibo &rarr; https://weibo.com/1870977125" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/MikoyChinese" title="Twitter &rarr; https://twitter.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/MikoyChinese" title="GitHub &rarr; https://github.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="310" height="86" src="//music.163.com/outchain/player?type=2&id=32217265&auto=0&height=66"></iframe>
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-coding-thinking"><span class="nav-number">1.1.</span> <span class="nav-text">The coding thinking:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-main-code"><span class="nav-number">1.2.</span> <span class="nav-text">The main code:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-whole-source-code"><span class="nav-number">1.3.</span> <span class="nav-text">The whole source code:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Finally"><span class="nav-number">2.</span> <span class="nav-text">Finally</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usage"><span class="nav-number">2.1.</span> <span class="nav-text">Usage:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-simple"><span class="nav-number">3.</span> <span class="nav-text">My simple:</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Author: Mikoy Chinese</span><span class="with-love" id="animate">
+    <i class="fa fa-universal-access" aria-hidden="true"></i>
+  </span>	
+	<a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">冀ICP备18037911 </a>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="/js/src/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'brvTzcxBkkKnhwjC0RIcuOE3-gzGzoHsz',
+    appKey: 'VzRqmqpvEeuGe0J50AUMTQuH',
+    placeholder: 'What about your thinking? Leave a message.',
+    avatar: 'monsterid',
+    meta: guest,
+    pageSize: '5' || 10,
+    visitor: false,
+    lang: 'en' || 'en'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.0"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+  <script>
+	(function(){
+    	var bp = document.createElement('script');
+    	var curProtocol = window.location.protocol.split(':')[0];
+    	if (curProtocol === 'https') {
+        	bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    	}
+    	else {
+        	bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    	}
+    	var s = document.getElementsByTagName("script")[0];
+    	s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>
