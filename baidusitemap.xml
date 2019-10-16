@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.mikoychinese.top/post/20191016-Install-OpenCV-4-on-Ubuntu-18-04/</loc>
+    <lastmod>2019-10-16</lastmod>
+  </url>  <url>
     <loc>https://www.mikoychinese.top/post/20190920-V2Ray-Document/</loc>
-    <lastmod>2019-09-20</lastmod>
+    <lastmod>2019-10-16</lastmod>
+  </url>  <url>
+    <loc>https://www.mikoychinese.top/post/20190921-Remote-machine-running-ROS-nodes/</loc>
+    <lastmod>2019-09-21</lastmod>
   </url>  <url>
     <loc>https://www.mikoychinese.top/post/20181014-yuebao-webank-moneyFund-profit/</loc>
     <lastmod>2019-08-28</lastmod>
