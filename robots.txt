@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /post/
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Allow: /about/
+Allow: /page/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /images/
+Disallow: /css/
+Disallow: /uploads/
+
+Sitemap: https://www.mikoychinese.top/sitemap.xml
+Sitemap: https://www.mikoychinese.top/baidusitemap.xml
