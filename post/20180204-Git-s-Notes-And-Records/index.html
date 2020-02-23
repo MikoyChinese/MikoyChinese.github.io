@@ -554,7 +554,7 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line"></span><br><span class="line">    README.md</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol start="2">
+<ol>
 <li><p><strong>Tracking New Files:</strong> <br><br> In order to begin tracking a new file, you use the command git add. To begin tracking the README file, you can run this:</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;files&gt;</span><br></pre></td></tr></table></figure>
 <p> If you wanna tracking a new folder, you can use the <code>&lt;path&gt;</code> instead of the <code>&lt;files&gt;</code>. Then, that will track all the files in your folder path.</p>
@@ -578,9 +578,9 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git rm README.md</span><br><span class="line">rm &apos;README..md&apos;</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">deleted:    README.md</span><br></pre></td></tr></table></figure>
 <p> If you want to keep the file in your working directory but remove it from your staging area. In other words, you wanna keep the file on your hard drive but not have git track it anymore. You can use the <code>git rm &lt;file&gt;</code> with <code>--cached</code> flag.</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    git rm --cached &lt;file&gt;</span><br><span class="line">    </span><br><span class="line">7. **Moving Files:** &lt;br&gt;</span><br><span class="line">    Unlike many other VCS systems, Git doesn’t explicitly track file movement. If you **rename a file in Git**, no metadata is stored in Git that tells it you renamed the file. However, Git is pretty smart about figuring that out after the fact — we’ll deal with detecting file movement a bit later.</span><br><span class="line">    If you want to rename a file in git, you can run the command something like this:</span><br></pre></td></tr></table></figure>
-<p> git mv &lt;file_frome/old_filename&gt; &lt;file_to/new_filename&gt;</p>
+<p> git mv <file_frome old_filename> <file_to new_filename></file_to></file_frome></p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">However, this is equivalent to running something like this:</span><br></pre></td></tr></table></figure>
-<p> $ mv &lt;file_from&gt; &lt;file_to&gt;<br> $ git rm &lt;file_from&gt;<br> $ git add &lt;file_to&gt;<br><strong><font color="red">Step 3:</font> Working with Remotes on Github</strong> <br></p>
+<p> $ mv <file_from> <file_to><br> $ git rm <file_from><br> $ git add <file_to><br><strong><font color="red">Step 3:</font> Working with Remotes on Github</strong> <br></file_to></file_from></file_to></file_from></p>
 </li>
 <li><p><strong>Configure your git remote:</strong> <br><br> If you are the first time to use the git’s remote function, you should configure your git such like this:</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &lt;Your Name&gt;</span><br><span class="line">git config --global user.email &lt;Your Email&gt;</span><br></pre></td></tr></table></figure>
@@ -787,7 +787,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -867,7 +867,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

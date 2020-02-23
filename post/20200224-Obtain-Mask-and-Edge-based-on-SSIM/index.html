@@ -106,25 +106,25 @@
 
 
 
-  <meta name="description" content="**Author:** Mikoy **Date:** 2019-11-03    1. 前述：&amp;emsp;&amp;emsp;光阴荏苒，2019年也走到了它的第十一个月头，即将宣告它的结束。回顾一年，对从一季度至三季度作一个总结。今年10月31日，中国移动、中国联通、中国电信三大运营商在中国国际信息通信展览会上正式公布了5G商用套餐。5G套餐标准的发布和启用，标志着中国5G商用时代的正式到来。在此，">
-<meta name="keywords" content="self,2019,5G">
+  <meta name="description" content="1. Introduction:&amp;emsp;&amp;emsp;在深度学习的图像领域，获取一个精确的ROI(Region of Interest)是非常重要的一个过程, 现阶段的图像标注过程中，基于效率，人们一般以Point、Rectangle等标准几何图形获取ROI以提取目标特征。但由于识别目标大多数为不规则几何形状，导致ROI区域中会或多或少地出现背景，从而导致提取目标特征时，部分参数会分配给背景。">
+<meta name="keywords" content="wiki,AI,SSIM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019三季度总结 | 5G时代的假想">
-<meta property="og:url" content="https://www.mikoychinese.top/post/20191103-2019-3rd-quarter-summary-and-5G-thinking/index.html">
+<meta property="og:title" content="基于SSIM提取单一背景下目标Mask及Edge">
+<meta property="og:url" content="https://www.mikoychinese.top/post/20200224-Obtain-Mask-and-Edge-based-on-SSIM/index.html">
 <meta property="og:site_name" content="Mikoy Chinese | 煮酒客">
-<meta property="og:description" content="**Author:** Mikoy **Date:** 2019-11-03    1. 前述：&amp;emsp;&amp;emsp;光阴荏苒，2019年也走到了它的第十一个月头，即将宣告它的结束。回顾一年，对从一季度至三季度作一个总结。今年10月31日，中国移动、中国联通、中国电信三大运营商在中国国际信息通信展览会上正式公布了5G商用套餐。5G套餐标准的发布和启用，标志着中国5G商用时代的正式到来。在此，">
+<meta property="og:description" content="1. Introduction:&amp;emsp;&amp;emsp;在深度学习的图像领域，获取一个精确的ROI(Region of Interest)是非常重要的一个过程, 现阶段的图像标注过程中，基于效率，人们一般以Point、Rectangle等标准几何图形获取ROI以提取目标特征。但由于识别目标大多数为不规则几何形状，导致ROI区域中会或多或少地出现背景，从而导致提取目标特征时，部分参数会分配给背景。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-22T01:50:31.945Z">
+<meta property="og:updated_time" content="2020-02-23T16:52:49.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019三季度总结 | 5G时代的假想">
-<meta name="twitter:description" content="**Author:** Mikoy **Date:** 2019-11-03    1. 前述：&amp;emsp;&amp;emsp;光阴荏苒，2019年也走到了它的第十一个月头，即将宣告它的结束。回顾一年，对从一季度至三季度作一个总结。今年10月31日，中国移动、中国联通、中国电信三大运营商在中国国际信息通信展览会上正式公布了5G商用套餐。5G套餐标准的发布和启用，标志着中国5G商用时代的正式到来。在此，">
+<meta name="twitter:title" content="基于SSIM提取单一背景下目标Mask及Edge">
+<meta name="twitter:description" content="1. Introduction:&amp;emsp;&amp;emsp;在深度学习的图像领域，获取一个精确的ROI(Region of Interest)是非常重要的一个过程, 现阶段的图像标注过程中，基于效率，人们一般以Point、Rectangle等标准几何图形获取ROI以提取目标特征。但由于识别目标大多数为不规则几何形状，导致ROI区域中会或多或少地出现背景，从而导致提取目标特征时，部分参数会分配给背景。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.mikoychinese.top/post/20191103-2019-3rd-quarter-summary-and-5G-thinking/">
+  <link rel="canonical" href="https://www.mikoychinese.top/post/20200224-Obtain-Mask-and-Edge-based-on-SSIM/">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>2019三季度总结 | 5G时代的假想 | Mikoy Chinese | 煮酒客</title>
+  <title>基于SSIM提取单一背景下目标Mask及Edge | Mikoy Chinese | 煮酒客</title>
   
 
 
@@ -372,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.mikoychinese.top/post/20191103-2019-3rd-quarter-summary-and-5G-thinking/">
+    <link itemprop="mainEntityOfPage" href="https://www.mikoychinese.top/post/20200224-Obtain-Mask-and-Edge-based-on-SSIM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mikoy Chinese">
@@ -389,7 +389,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">2019三季度总结 | 5G时代的假想
+          <h2 class="post-title" itemprop="name headline">基于SSIM提取单一背景下目标Mask及Edge
 
               
             
@@ -415,24 +415,12 @@
                 
               
 
-              <time title="Created: 2019-11-03 09:47:32" itemprop="dateCreated datePublished" datetime="2019-11-03T09:47:32+08:00">2019-11-03</time>
+              <time title="Created: 2020-02-24 00:44:46 / Modified: 00:52:49" itemprop="dateCreated datePublished" datetime="2020-02-24T00:44:46+08:00">2020-02-24</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-11-22 09:50:31" itemprop="dateModified" datetime="2019-11-22T09:50:31+08:00">2019-11-22</time>
               
             
           </span>
@@ -449,7 +437,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Wiki/" itemprop="url" rel="index"><span itemprop="name">Wiki</span></a></span>
 
                 
                 
@@ -468,8 +456,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/post/20191103-2019-3rd-quarter-summary-and-5G-thinking/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/post/20191103-2019-3rd-quarter-summary-and-5G-thinking/" itemprop="commentCount"></span>
+                <a href="/post/20200224-Obtain-Mask-and-Edge-based-on-SSIM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/20200224-Obtain-Mask-and-Edge-based-on-SSIM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -504,46 +492,86 @@
       
 
       
-        <center>
+        <h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction:"></a>1. Introduction:</h4><p>&emsp;&emsp;在深度学习的图像领域，获取一个精确的ROI(Region of Interest)是非常重要的一个过程, 现阶段的图像标注过程中，基于效率，人们一般以Point、Rectangle等标准几何图形获取ROI以提取目标特征。但由于识别目标大多数为不规则几何形状，导致ROI区域中会或多或少地出现背景，从而导致提取目标特征时，部分参数会分配给背景。</p>
+<p>&emsp;&emsp;考虑到常见的数据采集工作中，背景是单一的，故而考虑用减背景的方式获取目标的edge或mask区域。本文中利用的方法是用SSIM获取到对比图中差异性较大的区域，再从差异性区域中提取轮廓，对轮廓进行分析，以获取到目标精确的edge及mask。</p>
+<h4 id="2-SSIM"><a href="#2-SSIM" class="headerlink" title="2. SSIM:"></a>2. SSIM:</h4><p>&emsp;&emsp;SSIM Index(structural similarity index), 是一种用以衡量两张数位影像相似程度的指标。作为结构相似性理论的实现，结构相似度指数从图像组成的角度将结构信息定义为独立于亮度、对比度的，反映场景中物体结构的属性，并将失真建模为亮度、对比度和结构三个不同因素的组合。用均值作为亮度的估计，标准差作为对比度的估计，协方差作为结构相似程度的度量。</p>
+<a id="more"></a>
+<p>&emsp;&emsp;实际使用时，简化起见，一般会将参数设为<script type="math/tex">{\displaystyle \alpha =\beta =\gamma =1}{\displaystyle \alpha =\beta =\gamma =1}</script>及<script type="math/tex">{\displaystyle C_{3}=C_{2}/2}{\displaystyle C_{3}=C_{2}/2}</script>，得到:</p>
+<center>
 
-**Author:** Mikoy **Date:** 2019-11-03
+**$$SSIM\left ( x, y \right ) = \frac{(2*\mu_{x}\mu_{y} + c_{1})(2\sigma_{xy} + c_{2})}{(\mu_{x}^{2} + \mu_{y}^{2} + c_{1})(\sigma_{x}^{2} + \sigma_{y}^{2} + c_{2})}$$**
 
 </center>
 
-<h4 id="1-前述："><a href="#1-前述：" class="headerlink" title="1. 前述："></a>1. 前述：</h4><p>&emsp;&emsp;光阴荏苒，2019年也走到了它的第十一个月头，即将宣告它的结束。回顾一年，对从一季度至三季度作一个总结。今年10月31日，中国移动、中国联通、中国电信三大运营商在中国国际信息通信展览会上正式公布了5G商用套餐。5G套餐标准的发布和启用，标志着中国5G商用时代的正式到来。在此，我也会探讨一些个人对5G时代的假象。</p>
-<a id="more"></a>
+<p>其中<script type="math/tex">\mu_{x}</script>, <script type="math/tex">\mu_{y}</script>为对比图像像素值，<script type="math/tex">\sigma_{x}</script>, <script type="math/tex">\sigma_{y}</script>为对比图像像素值的标准差，<script type="math/tex">\sigma_{xy}</script>为x与y的协方差。<script type="math/tex">c_{1}</script>, <script type="math/tex">c_{2}</script>为常数。根据作者论文数据表明，一个较好的参数效果为c1及c2为输入数据的取值范围乘以k1=0.01, k2=0.03的平方。</p>
+<h4 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现:"></a>3.代码实现:</h4><ul>
+<li>由于RGB图像是3通道的矩阵，且由于摄像头镜头及感光芯片的原因，同种环境下产生的图片也会有差异，为了弱化硬件带来的影响，直接比较其灰度图，并对灰度图进行均值滤波或其他滤波进行优化。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img1 = cv2.imread(img1_path) <span class="comment"># RGB [...,::-1]</span></span><br><span class="line">img2 = cv2.imread(img2_path)</span><br><span class="line"></span><br><span class="line">gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line">gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line"><span class="comment"># uniform_filter or gaussian_filter</span></span><br><span class="line">ux = filter_func(gray1, **filter_args)</span><br><span class="line">uy = filter_func(gray2, **filter_args)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>阅读方面:</strong> 说来惭愧，从一季度阅读完《Three days to see》，整个二季度至现在，仅阅读完了《毛泽东选集》的第一卷,  其主要展示了毛泽东同志在内战时期和抗日时期发表的讲话或文章，通过这些去了解不同时期其思想上的不同，和针对某些问题的观点。</li>
-<li><strong>英文学习方面:</strong> 翻阅扇贝阅读，从年初至今，一共打卡阅读共186天，而年初到现在一共是306天，完成率约在60.78%，翻阅记录，未打卡时间集中在节假日及周末。而单词背诵方面，查阅有道背单词记录，今年共打卡169天，完成率约在55.23%。未打卡时间与阅读一致。其实预估过，完成英文阅读及单词背诵，耗时一般在20-30分钟左右，但我现阶段的意志力及自制力仅在早上生效，而晚上时间内，由于低自制力而被很多其他事务影响，导致不能按时按量完成学习任务，这是后续最直观的改善点，也可能是最难的。Fighting, Nothing will change you but yourself.</li>
-<li><strong>理财方面:</strong> 这方面真是成也萧何，败也萧何。年初时因为收益已完成目标，故而筛选了康美药业作底仓冀希可以在维持收益的情况下再搏一次反弹，虽其后续贡献了约20%的可观收益，但人心不足蛇吞象，太过贪心，导致后续其爆出300亿货币资金作假的事件，最终反亏损40+%。5-6月是一个低迷期，由于康美事件，导致怀疑自身投资策略（低价周期策略），所以选择了追概念，所幸航天通信，给力挽回了部分损失，但经过两个月的调整，发现不适合我，太累，风险反而更高。最终还是认为自身投资策略没有问题，坚守初心，故而选取了三安光电，欧菲光，网宿科技，幸运的是，这次获取了很可观的收益，至现在，已将康美所有亏损收回。后续继续看好这两个。文末也会顺带讲讲2020年的选取标的。</li>
-<li><strong>抽烟数量:</strong> 年初定的是A packet 3 days. 现阶段还是维持A packet 2 days，变化不大，继续改进。改电子烟后，数量下滑了~</li>
+<li>然后根据上面公式进行构建：</li>
 </ul>
-<h4 id="2-个人关于5G时代的假想："><a href="#2-个人关于5G时代的假想：" class="headerlink" title="2. 个人关于5G时代的假想："></a>2. 个人关于5G时代的假想：</h4><p>&emsp;&emsp;2019年是5G商用的元年，很多朋友可能已经在各渠道消息了解了5G，最直观的感受可能就是网速变快了，延迟降低了。像何同学讲的，在4G时代来临时，我们也没有能预见未来会出现移动支付，全民直播的时代，那么5G后又可能出现什么样的精彩呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">uxx = filter_func(gray1 * gray1, **filter_args)</span><br><span class="line">uyy = filter_func(gray2 * gray2, **filter_args)</span><br><span class="line">uxy = filter_func(gray1 * gray2, **filter_args)</span><br><span class="line"></span><br><span class="line">vx = uxx - ux * ux</span><br><span class="line">vy = uyy - uy * uy</span><br><span class="line">vxy = uxy - ux * uy</span><br><span class="line"></span><br><span class="line"><span class="comment"># Refer to  Wang, Z., Bovik, A. C., Sheikh, H. R., &amp; Simoncelli, E. P.</span></span><br><span class="line"><span class="comment">#           (2004). Image quality assessment: From error visibility to</span></span><br><span class="line"><span class="comment">#           structural similarity. IEEE Transactions on Image Processing,</span></span><br><span class="line"><span class="comment">#           13, 600-612.</span></span><br><span class="line"></span><br><span class="line">k1, k2 = <span class="number">0.01</span>, <span class="number">0.03</span></span><br><span class="line">min, max = np.iinfo(gray1.dtype.type).min, np.iinfo(gray1.dtype.type).max</span><br><span class="line">range = max - min</span><br><span class="line">C1, C2 = (k1 * range) ** <span class="number">2</span>, (k2 * range) ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 简化上公式: SSIM = (A * B) / (C * D)</span></span><br><span class="line"></span><br><span class="line">A = <span class="number">2</span> * ux * uy + C1</span><br><span class="line">B = <span class="number">2</span> * vxy + C2</span><br><span class="line">C = ux ** <span class="number">2</span> + uy ** <span class="number">2</span> + C1</span><br><span class="line">D = vx + vy + C2</span><br><span class="line"></span><br><span class="line">SSIM = (A * B) / (C * D)</span><br><span class="line"><span class="comment"># If we need ssim index, compute it mean:</span></span><br><span class="line">ssim_index = np.mean(SSIM)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>云应用:</strong></li>
+<li>上面的函数可以返回相似度及差异区域图，我们就利用差异图进行分析并提取其轮廓:</li>
 </ul>
-<p>&emsp;&emsp;5G时代因为其网速快，低延时，这么明显的特点，已经十分符合云应用及云存储了。在现阶段，由于网速及延时，各应用方为了保证用户体验，所以大部分应用是已经编译好存储在手机存储中，以及很多用户保存数据也是在手机中及硬盘内。其实人们使用这些工具无非也是为了获取内容和创造内容，如果未来通过5G获取的速度能达到或超过硬盘写入和读取的速度，那么是完全可以替代的，人们未来手机中的应用可能只是一个界面端，类似现在很多平台推出的小程序，把计算量大，读取写入大的数据内容交给云端，前端只需获取并显示即可，不需要写入内存计算或保存本地。以后拍摄的图片也是如此，直接交给Cloud，其实像icloud, google photo已经开始应用这项功能了。那么势必未来手机的内存和存储不再是用户选择手机的考虑点，因为它根本不重要。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">score, diff = ssim(gray1, gray2)</span><br><span class="line">diff = (diff * <span class="number">255</span>).astype(<span class="string">'uint8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取轮廓</span></span><br><span class="line">thresh = cv2.threshold(diff, <span class="number">0</span>, <span class="number">255</span>,</span><br><span class="line">                       cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[<span class="number">1</span>]</span><br><span class="line">cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,</span><br><span class="line">                        cv2.CHAIN_APPROX_NONE)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>物联网:</strong></li>
+<li>部分场景中可能存在小区域波动及变化也产生了轮廓，如果我们不需要这些轮廓，可利用目标主体大致占图像的百分比进行排除:</li>
 </ul>
-<p>&emsp;&emsp;物联网是5G应用的大热点，现阶段受大众认可的有智能家居，工业物联，无人驾驶等方面得应用，但我相信未来会有更多更好的场景落地。而我假象是结合无线充电的物联网场景，假设未来有技术能利用5g高频转化为电能，那么未来很多低功耗的物联网设备终端就可以在许多没有有线供电场景下应用了。而无人驾驶现阶段是汽车自主型识别路况及作出分析，假设未来汽车安置5g通讯设备并使用esim，5g低延时及稳定性得到验证，由通讯端试试上报汽车位置及速度，并且GIS系统完善道路信息，是很有可能通过系统的调度实现无人驾驶的，首先应该在高速路段实现，ETC的推广也是进一步实现全程无人驾驶。</p>
-<h4 id="3-2020年投资计划"><a href="#3-2020年投资计划" class="headerlink" title="3. 2020年投资计划:"></a>3. 2020年投资计划:</h4><ul>
-<li><strong>三安光电:</strong></li>
-</ul>
-<p>&emsp;&emsp;看中其大规模生产LED芯片的能力，而且近期芯片产业布局一直在扩张，第三代化合物半导体业务推进顺利，具备物联网低功耗芯片的生产优势，且国家战略层面也需要培养自身的半导体工业，所以继续看好三安光电。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cnts_need = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> cnt <span class="keyword">in</span> cnts:</span><br><span class="line">    area = cv2.contourArea(cnt)</span><br><span class="line">    <span class="comment"># gray1.size = gray1.width * gray1.height * gray1.channel</span></span><br><span class="line">    <span class="comment"># gray has only 1 channel, So area is equal with gray1.size.</span></span><br><span class="line">    <span class="keyword">if</span> area &gt; gray1.size * <span class="number">0.05</span>:</span><br><span class="line">        cnts_need.append(cnt)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>网宿科技:</strong></li>
+<li>绘制轮廓:</li>
 </ul>
-<p>&emsp;&emsp;国内CDN龙头，近期布局将各地区节点升级为具备存储技术能力的节点。虽然近期大股东持续减持，业务也被阿里云，腾讯云等互联网巨头蚕食，利润下滑，但这也给了我们很好的建仓机会。我看好它在未来5g和物联网数据大规模爆发，为庞大数据提供分发加速并且附带计算的能力。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Box:</span></span><br><span class="line"><span class="keyword">for</span> cnt <span class="keyword">in</span> cnts_need:</span><br><span class="line">    (x, y, w, h) = cv2.boundingRect(cnt)</span><br><span class="line">    cv2.rectangle(gray1, (x, y), (x + w, y + h), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line">    cv2.rectangle(gray2, (x, y), (x + w, y + h), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># Edge:</span></span><br><span class="line">point_size = <span class="number">1</span></span><br><span class="line">point_color = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>) <span class="comment"># BGR</span></span><br><span class="line">thickness = <span class="number">0</span> <span class="comment"># 可以為 0 、4、8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> cnt <span class="keyword">in</span> cnts_need:</span><br><span class="line">    <span class="keyword">for</span> point <span class="keyword">in</span> cnt:</span><br><span class="line">        cv2.circle(gray2, tuple(point[<span class="number">0</span>]), point_size, point_color, thickness)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>亿纬锂能:</strong></li>
+<li>获取Mask:</li>
 </ul>
-<p>&emsp;&emsp;是国内高能锂电池供应商，随着传统汽车行业业务逐步下滑及人们环保意识逐渐增强，未来新能源汽车行业势必会迎来新的浪潮，国内做这块业务的有宁德时代，比亚迪，都是很不错的选择。而我看中他的原因是看好其针对中小端设备的锂电池专利，近期推出的金豆未来可期，而物联网设备，肯定需要用电，而一个具有能量密度高且体积小的电池是拥有很大需求的。并且它还有三元电池及电子烟概念，未来会迎来爆发。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">bg = np.zeros((gray2.shape[<span class="number">0</span>], gray2.shape[<span class="number">1</span>]), np.uint8)</span><br><span class="line"><span class="comment"># Get mask one by one:</span></span><br><span class="line"><span class="keyword">for</span> cnt <span class="keyword">in</span> cnts_need:</span><br><span class="line">    mask = cv2.fillPoly(bg, [cnt], (<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br><span class="line">    res = cv2.bitwise_and(img2, img2, mask=mask)</span><br><span class="line">    cv2.imshow(<span class="string">'Result'</span>, res)</span><br><span class="line">    k = cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> k == <span class="number">27</span> <span class="keyword">or</span> k == ord(<span class="string">'q'</span>):</span><br><span class="line">        cv2.destroyAllWindows()</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Get all masks:    </span></span><br><span class="line">masks = cv2.fillPoly(bg, cnts_need, (<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br><span class="line">res = cv2.bitwise_and(img2, img2, mask=mask)</span><br><span class="line">cv2.imshow(<span class="string">'Result'</span>, res)</span><br><span class="line">k = cv2.waitKey(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">if</span> k == <span class="number">27</span> <span class="keyword">or</span> k == ord(<span class="string">'q'</span>):</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h4 id="4-测试结果"><a href="#4-测试结果" class="headerlink" title="4. 测试结果:"></a>4. 测试结果:</h4><ul>
+<li>输入比较图:</li>
+</ul>
+<center>
+
+![Input_original_image](https://s2.ax1x.com/2020/02/24/33tDPS.md.png)
+
+</center>
+
 <ul>
-<li><strong>超图软件和天齐锂业及欧菲光:</strong></li>
+<li>差异图:</li>
 </ul>
-<p>&emsp;&emsp;超图软件是亚洲最大的地理信息系统软件与服务提供商，看好他在未来无人驾驶GIS方面的合作落地。天齐锂业，看好它的原因是因为其高质量的锂矿资源及未来新能源行业的爆发需要大量锂原料生产电池，而且价格够低，等把债务问题解决，开始估值修复。欧菲光看好它是因为价格够低，未来随着5g手机价格下滑到平民价，势必迎来业务爆发。</p>
-<p>&emsp;&emsp;其实这些都只是个人看法，重要的还是坚守初心，记得自己原来看好的，但如果遇到你看好的基础崩塌，记得早点跑路，毕竟人生总会遇到几次康美，哈哈，吐槽完毕。</p>
+<center>
+
+![Diff](https://s2.ax1x.com/2020/02/24/33t5PU.md.png)
+
+</center>
+
+<ul>
+<li>绘制轮廓Box:</li>
+</ul>
+<center>
+
+![Box](https://s2.ax1x.com/2020/02/24/33NQLn.md.png)
+
+</center>
+
+<ul>
+<li>绘制轮廓Edge:</li>
+</ul>
+<center>
+
+![Edge](https://s2.ax1x.com/2020/02/24/33NqSg.md.png)
+
+</center>
+
+<ul>
+<li>获取Mask:</li>
+</ul>
+<center>
+
+![Mask](https://s2.ax1x.com/2020/02/24/33Uk6J.md.png)
+
+</center>
 
       
     </div>
@@ -589,7 +617,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="https://www.mikoychinese.top/post/20191103-2019-3rd-quarter-summary-and-5G-thinking/" title="2019三季度总结 | 5G时代的假想">https://www.mikoychinese.top/post/20191103-2019-3rd-quarter-summary-and-5G-thinking/</a>
+    <a href="https://www.mikoychinese.top/post/20200224-Obtain-Mask-and-Edge-based-on-SSIM/" title="基于SSIM提取单一背景下目标Mask及Edge">https://www.mikoychinese.top/post/20200224-Obtain-Mask-and-Edge-based-on-SSIM/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -613,11 +641,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/self/" rel="tag"># self</a>
+            <a href="/tags/wiki/" rel="tag"># wiki</a>
           
-            <a href="/tags/2019/" rel="tag"># 2019</a>
+            <a href="/tags/AI/" rel="tag"># AI</a>
           
-            <a href="/tags/5G/" rel="tag"># 5G</a>
+            <a href="/tags/SSIM/" rel="tag"># SSIM</a>
           
         </div>
       
@@ -650,8 +678,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/20191016-Install-OpenCV-4-on-Ubuntu-18-04/" rel="next" title="Install OpenCV 4 on Ubuntu 18.04">
-                <i class="fa fa-chevron-left"></i> Install OpenCV 4 on Ubuntu 18.04
+              <a href="/post/20200118-book_ThreeDaysToSee/" rel="next" title="ThreeDaysToSee">
+                <i class="fa fa-chevron-left"></i> ThreeDaysToSee
               </a>
             
           </div>
@@ -659,10 +687,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/20200118-2019-review/" rel="prev" title="2019 总结 | 展望 2020">
-                2019 总结 | 展望 2020 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -917,7 +941,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-前述："><span class="nav-number">1.</span> <span class="nav-text">1. 前述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-个人关于5G时代的假想："><span class="nav-number">2.</span> <span class="nav-text">2. 个人关于5G时代的假想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2020年投资计划"><span class="nav-number">3.</span> <span class="nav-text">3. 2020年投资计划:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-SSIM"><span class="nav-number">2.</span> <span class="nav-text">2. SSIM:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-代码实现"><span class="nav-number">3.</span> <span class="nav-text">3.代码实现:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-测试结果"><span class="nav-number">4.</span> <span class="nav-text">4. 测试结果:</span></a></li></ol></div>
             
 
           </div>
@@ -1140,6 +1164,43 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
   
 
 

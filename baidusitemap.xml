@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.mikoychinese.top/post/20200224-Obtain-Mask-and-Edge-based-on-SSIM/</loc>
+    <lastmod>2020-02-23</lastmod>
+  </url>  <url>
+    <loc>https://www.mikoychinese.top/post/20180209-jetson-tx2-wiki/</loc>
+    <lastmod>2020-02-23</lastmod>
+  </url>  <url>
     <loc>https://www.mikoychinese.top/post/20200118-book_ThreeDaysToSee/</loc>
     <lastmod>2020-01-18</lastmod>
   </url>  <url>
@@ -47,9 +53,6 @@
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
     <loc>https://www.mikoychinese.top/post/20181014-yuebao-webank-moneyFund-profit/</loc>
-    <lastmod>2019-11-22</lastmod>
-  </url>  <url>
-    <loc>https://www.mikoychinese.top/post/20180209-jetson-tx2-wiki/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>
 </urlset>

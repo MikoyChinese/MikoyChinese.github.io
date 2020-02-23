@@ -116,7 +116,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://i0.wp.com/www.jetsonhacks.com/wp-content/uploads/2017/03/IMG_1954.jpg?w=960">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9830587-f0d843bebd2fc2ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620">
-<meta property="og:updated_time" content="2019-11-22T01:41:54.204Z">
+<meta property="og:updated_time" content="2020-02-23T16:47:44.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jetson TX2 Document">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;Nvidia Jetson stands for a series of computation processor boards from Nvidia. The Jetson TK1, TX1 and TX2 models are all are carrying a Tegra processor from Nvidia. Nvidia claims that it">
@@ -435,7 +435,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-22 09:41:54" itemprop="dateModified" datetime="2019-11-22T09:41:54+08:00">2019-11-22</time>
+                <time title="Modified: 2020-02-24 00:47:44" itemprop="dateModified" datetime="2020-02-24T00:47:44+08:00">2020-02-24</time>
               
             
           </span>
@@ -508,7 +508,11 @@
 
       
         <p>&emsp;&emsp;Nvidia Jetson stands for a series of computation processor boards from Nvidia. The Jetson TK1, TX1 and TX2 models are all are carrying a Tegra processor from Nvidia. Nvidia claims that it is an AI supercomputer on a module, powered by NVIDIA Pascal™ architecture. Best of all, it packs this performance into a small, power-efficient form factor that’s ideal for intelligent edge devices like robots, drones, smart cameras, and portable medical devices. It supports all the features of the Jetson TX1 module while enabling bigger, more complex deep neural networks. If you want to know more useful information about Jetson TX2, you can scan <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems-dev-kits-modules/" target="_blank" rel="noopener">Nvidia Jetson</a>.</p>
-<center><br><img src="https://i0.wp.com/www.jetsonhacks.com/wp-content/uploads/2017/03/IMG_1954.jpg?w=960" alt="Jetson TX2"><br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/9830587-f0d843bebd2fc2ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620"><br></center>
+<center>
+<img src="https://i0.wp.com/www.jetsonhacks.com/wp-content/uploads/2017/03/IMG_1954.jpg?w=960" alt="Jetson TX2">
+<a id="more"></a>
+<img src="http://upload-images.jianshu.io/upload_images/9830587-f0d843bebd2fc2ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620">
+</center>
 
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction:"></a>Introduction:</h2><p>&emsp;&emsp;Because Jeston TX2 is so different from the other PC installed Ubuntu16.04, I reconized that it needs to write an article to guide other people who are the hardware and software developers and wanna learn it more to install and configure Jeston TX2. Finally, I am enormously grateful for the help from <a href="http://www.jetsonhacks.com" target="_blank" rel="noopener">JetsonHacks</a>, it provides so many useful tutorials and sources which is built in <a href="https://github.com/jetsonhacks" target="_blank" rel="noopener">JetsonHacks Github</a>.</p>
 <h2 id="1-Install-JetPack-Ubuntu"><a href="#1-Install-JetPack-Ubuntu" class="headerlink" title="1.Install JetPack(Ubuntu):"></a>1.Install JetPack(Ubuntu):</h2><p>&emsp;&emsp;When we get the Jetson TX2, it already installed an origin system(Ubuntu), but it has little usefulness. If we do use actraly to develop it for Deep Learning or other way to play what you want, you need to install the official system JetPack(This article is based on <strong>JetPack 3.1 which introduces L4T 28.1</strong>).<br></p>
@@ -552,9 +556,9 @@
 </li>
 <li><p>Run it.<br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">3.  &lt;font color=red&gt;**Third Step:**&lt;/font&gt; Installing Interface</span><br><span class="line">    - Read and watch it conscientiously. If it is no choice for you, you can **click next** no worry about it.</span><br><span class="line">    - Full install or make your choice. As for me, I choosed no action OpenCV because this version called **OpenCV4Tegra** and some libraries require different modules and such that require upstream OpenCV versions.</span><br><span class="line">![InstallFace](https://upload-images.jianshu.io/upload_images/9830587-8b92b3183a13185c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - Accept **all licenses**.</span><br><span class="line">    - Select the **network layout**(I recommend you select the first way.).</span><br><span class="line">![002.png](https://upload-images.jianshu.io/upload_images/9830587-d23dbdac14611b0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">     - Then you will select the network interface and it will show that all the **network card** in your PC. You can run the **`ifconfig`** command on your PC terminal, and choose the device which has IP net or is in your LAN. Such like this:</span><br><span class="line">![Network Device](https://upload-images.jianshu.io/upload_images/9830587-66f7f8c9aa995230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - So you need to choose the wlp4s0 device.(The picture is catch by Internet, not my PC show. You should make choice depending on your PC.)</span><br><span class="line">![003.png](https://upload-images.jianshu.io/upload_images/9830587-345ca456dd9257ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - Clicking the next, and you will obtain the interface from terminal where show you how to put your Jetson TX2 to force **USB Recovery Mode** and if you are ready, press the **Enter key**.</span><br><span class="line">        1. **Power off your device**, the best way you do is that shutdown your Jetson TX2 and remove the power adapter for 3 seconds.</span><br><span class="line">        2. Connect **Your PC** up to **TX2** with **Micro-USB**.</span><br><span class="line">        3. **Power on your device**, and **immediately press and hold** the **RECOVERY** button(REC on your board), meanwhile press the **RESET**(RES on your board) button and release it. If you see the TX2 board flash it&apos;s light for a while, that means that you are successful in Recovery Mode.</span><br><span class="line">![004.png](https://upload-images.jianshu.io/upload_images/9830587-2a0a8d188942f428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">        4. Also you can run `lsusb` in your PC terminal to show whether you are successful.(You can also skip this step.)</span><br><span class="line">![005.png](https://upload-images.jianshu.io/upload_images/9830587-b8b7ced8966c8119.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - Installing Process will spend some time, then the Jetson TX2 will **power on** and your PC will connect it by SSH(automatic).</span><br><span class="line">![006.png](https://upload-images.jianshu.io/upload_images/9830587-d72b8121cc6d4110.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - Finish in installing and you can **remove all packages** about JetPack.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 2.Install Tensorflow:</span><br><span class="line">&amp;emsp;&amp;emsp;TensorFlow is one of the major deep learning systems. Created at Google, it is an open-source software library for machine intelligence. The Jetson TX2 ships with TensorRT. TensorRT is what is called an “Inference Engine“, the idea being that large machine learning systems can train models which are then transferred over and “run” on the Jetson.</span><br><span class="line">&lt;br&gt;&amp;emsp;&amp;emsp;There are two ways to install Tensorflow in Jetson TX2, this article just show you install by wheel file. Because when I build the tensorflow by myself, I got a error: **locale en_US**, the issue address: https://github.com/bazelbuild/bazel/issues/4483.</span><br><span class="line">#### Build Information and Tensorflow Version:</span><br><span class="line">- L4T 28.1 (JetPack 3.1)</span><br><span class="line">- CUDA 8.0</span><br><span class="line">- cuDNN 6.0</span><br><span class="line">* Tensorflow Version 1.3.0</span><br><span class="line">* Built with CUDA support</span><br><span class="line">#### Install Preparation:</span><br><span class="line">1. Download the wheel file from https://github.com/jetsonhacks/installTensorFlowJetsonTX.git.</span><br><span class="line">2. Install the matching pip for your Python installation and install tensorflow_wheel_file in your download path. </span><br><span class="line">&lt;br&gt;If you are Chinese, you can choose update your apt-sources like the 3 step next. </span><br><span class="line">    - **Python 2.7**</span><br></pre></td></tr></table></figure>
-<p>  sudo apt-get install -y python-pip python-dev<br>  pip install &lt;tensorflow_wheel_file&gt;</p>
+<p>  sudo apt-get install -y python-pip python-dev<br>  pip install <tensorflow_wheel_file></tensorflow_wheel_file></p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- **Python 3.5**</span><br></pre></td></tr></table></figure>
-<p>  sudo apt-get install -y python3-pip python3-dev<br>  pip3 install &lt;tensorflow_wheel_file&gt;</p>
+<p>  sudo apt-get install -y python3-pip python3-dev<br>  pip3 install <tensorflow_wheel_file></tensorflow_wheel_file></p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3. **Update apt-sources:(For Chinese)**</span><br><span class="line">    - CD your apt-sources path.</span><br></pre></td></tr></table></figure>
 <p>  cd /etc/apt</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- Edit the sources file.</span><br><span class="line">    1. `sudo gedit ./sources.list`</span><br><span class="line">    2. Replace all the text by this:</span><br></pre></td></tr></table></figure>
@@ -580,7 +584,65 @@
 <li>Jetson TX2 consists of a CPU and a GPU cluster. Dual - core CPU clusters   composed of 2 processors and quad - core ARM Cortex-A57 in Denver,         connected by a high-performance interconnect architectures.</li>
 <li>Next I will list all modes of Jetson TX2 and the detail about it.</li>
 </ul>
-<center><br><table><br>    <tr><strong>nvpmodel mode definition</strong></tr><br>    <tr><br>        <td>Model</td><br>        <td>Model Name</td><br>        <td>Denver 2</td><br>        <td>频率</td><br>        <td>ARM A57</td><br>        <td>Frequency</td><br>        <td>GPU频率</td><br>    </tr><br>    <tr><br>        <td>0</td><br>        <td>Max-N</td><br>        <td>2</td><br>        <td>2.0 GHz</td><br>        <td>4</td><br>        <td>2.0 GHz</td><br>        <td>1.30 GHz</td><br>    </tr><br>    <tr><br>        <td>1</td><br>        <td>Max-Q</td><br>        <td>0</td><br>        <td></td><br>        <td>4</td><br>        <td>1.2 GHz</td><br>        <td>0.85 GHz</td><br>    </tr><br>    <tr><br>        <td>2</td><br>        <td>Max-P Core-All</td><br>        <td>2</td><br>        <td>1.4 GHz</td><br>        <td>4</td><br>        <td>1.4 GHz</td><br>        <td>1.12 GHz</td><br>    </tr><br>    <tr><br>        <td>3</td><br>        <td>Max-P ARM</td><br>        <td>0</td><br>        <td></td><br>        <td>4</td><br>        <td>2.0 GHz</td><br>        <td>1.2 GHz</td><br>    </tr><br>    <tr><br>        <td>4</td><br>        <td>Max-P Denver</td><br>        <td>2</td><br>        <td>2.0 GHz</td><br>        <td>0</td><br>        <td></td><br>        <td>1.2 GHz</td><br>    </tr><br></table><br></center>
+<center>
+<table>
+    <tr><strong>nvpmodel mode definition</strong></tr>
+    <tr>
+        <td>Model</td>
+        <td>Model Name</td>
+        <td>Denver 2</td>
+        <td>频率</td>
+        <td>ARM A57</td>
+        <td>Frequency</td>
+        <td>GPU频率</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>Max-N</td>
+        <td>2</td>
+        <td>2.0 GHz</td>
+        <td>4</td>
+        <td>2.0 GHz</td>
+        <td>1.30 GHz</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Max-Q</td>
+        <td>0</td>
+        <td></td>
+        <td>4</td>
+        <td>1.2 GHz</td>
+        <td>0.85 GHz</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Max-P Core-All</td>
+        <td>2</td>
+        <td>1.4 GHz</td>
+        <td>4</td>
+        <td>1.4 GHz</td>
+        <td>1.12 GHz</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Max-P ARM</td>
+        <td>0</td>
+        <td></td>
+        <td>4</td>
+        <td>2.0 GHz</td>
+        <td>1.2 GHz</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Max-P Denver</td>
+        <td>2</td>
+        <td>2.0 GHz</td>
+        <td>0</td>
+        <td></td>
+        <td>1.2 GHz</td>
+    </tr>
+</table>
+</center>
 
 <ul>
 <li><p>Check the mode Version:</p>
@@ -788,7 +850,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -868,7 +930,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
