@@ -16,7 +16,7 @@
 
 <html class="theme-next mist use-motion" lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -173,7 +173,124 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container {
+  overflow: auto hidden;
+}
+
+mjx-container + br {
+  display: none;
+}
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -182,7 +299,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -513,13 +630,17 @@
 <li>Bazel</li>
 </ul>
 <a id="more"></a>
+
 <h2 id="2-Installing-Step"><a href="#2-Installing-Step" class="headerlink" title="2. Installing Step:"></a>2. Installing Step:</h2><h4 id="Step-1-Install-JetPack3-2"><a href="#Step-1-Install-JetPack3-2" class="headerlink" title="Step 1: Install JetPack3.2"></a>Step 1: Install JetPack3.2</h4><ul>
 <li>Download this <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank" rel="noopener">file</a> and install like this <a href="http://www.jetsonhacks.com/2017/03/21/jetpack-3-0-nvidia-jetson-tx2-development-kit/" target="_blank" rel="noopener">Url</a>.<h4 id="Step-2-Install-Java"><a href="#Step-2-Install-Java" class="headerlink" title="Step 2: Install Java"></a>Step 2: Install Java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h4 id="Step-3-Install-More-Stuff"><a href="#Step-3-Install-More-Stuff" class="headerlink" title="Step 3: Install More Stuff"></a>Step 3: Install More Stuff</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># For Python2</span><br><span class="line">sudo apt-get install zip unzip autoconf automake libtool curl zlib1g-dev maven -y</span><br><span class="line">sudo apt-get install python-numpy swig python-dev python-pip python-wheel -y</span><br><span class="line"></span><br><span class="line"># For Python3</span><br><span class="line">sudo apt-get install zip unzip autoconf automake libtool curl zlib1g-dev maven -y</span><br><span class="line">sudo apt-get install python3-numpy swig python3-dev python3-pip python3-wheel -y</span><br></pre></td></tr></table></figure>
+
 <h4 id="Step-4-Install-Bazel"><a href="#Step-4-Install-Bazel" class="headerlink" title="Step 4: Install Bazel"></a>Step 4: Install Bazel</h4><ul>
-<li>Download the <a href="https://github.com/bazelbuild/bazel/releases/download/0.11.1/bazel-0.11.1-dist.zip" target="_blank" rel="noopener">Bazel-0.11.1-dist</a></li>
+<li><p>Download the <a href="https://github.com/bazelbuild/bazel/releases/download/0.11.1/bazel-0.11.1-dist.zip" target="_blank" rel="noopener">Bazel-0.11.1-dist</a></p>
+</li>
 <li><p>Unzip the package</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Up to your download file path.</span><br><span class="line">sudo unzip ./bazel.0.11.1-dist.zip -d ./bazel.0.11.1-dist</span><br></pre></td></tr></table></figure>
 </li>
@@ -528,11 +649,13 @@
 </li>
 <li><p>Start the compilation process by issuing</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./compile.sh</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>&emsp;&emsp;If you get the <strong>error</strong> : <code>Closure Rules requires Bazel &gt;=0.4.5 but was 0.11.1</code> , see like this<a href="https://github.com/bazelbuild/bazel/issues/4834" target="_blank" rel="noopener"> bazel#4834</a>. Change all the error file the version 0.4.5 to 0.0.0. Then you will build it successfully.<br><br>&emsp;&emsp;If you get the  <strong>error</strong> : <code>/home/nvidia/.cache/bazel/_bazel_nvidia/d2751a49dacf4cb14a513ec663770624/external/io_bazel_rules_closure/closure/stylesheets/closure_css_library.bzl:27:13: The function &#39;set&#39; has been removed in favor of &#39;depset&#39;, please use the latter. You can temporarily refer to the old &#39;set&#39; constructor from unexecuted code by using --incompatible_disallow_uncalled_set_constructor=false</code> , see like this issue <a href="https://github.com/bazelbuild/bazel/issues/4828" target="_blank" rel="noopener">bazel#4828</a>. Build it again in another time.</p>
 <ul>
 <li>Copy the build to your system bin folder<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp output/bazel /usr/local/bin</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h4 id="Step-5-Configure-Tensorflow-and-build"><a href="#Step-5-Configure-Tensorflow-and-build" class="headerlink" title="Step 5: Configure Tensorflow and build"></a>Step 5: Configure Tensorflow and build</h4><ul>
@@ -553,9 +676,11 @@
 </li>
 <li><p>Install the pip wheel:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install $HOME/tensorflow-1.5.0-cp35-cp35mu-linux_aarch64.whl</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h2 id="3-Test-the-Tensorflow"><a href="#3-Test-the-Tensorflow" class="headerlink" title="3. Test the Tensorflow"></a>3. Test the Tensorflow</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line">import tensorflow as tf</span><br><span class="line">tf.__version__</span><br><span class="line">&gt;&gt;1.5.0</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1281,7 +1406,7 @@
         }, 300);
       }).append(e);
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

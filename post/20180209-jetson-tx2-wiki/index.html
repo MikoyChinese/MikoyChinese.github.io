@@ -16,7 +16,7 @@
 
 <html class="theme-next mist use-motion" lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -176,7 +176,124 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container {
+  overflow: auto hidden;
+}
+
+mjx-container + br {
+  display: none;
+}
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -185,7 +302,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -541,10 +658,14 @@
 </li>
 </ul>
 <ol>
-<li>An <strong>desktop or laptop computer</strong> with an Intel or <strong>AMD x86 processor</strong>.</li>
-<li>A <strong>Micro USB</strong> and An <strong>Ethernet cable</strong> which will connect your PC and Jetson TX2.</li>
-<li><strong>LAN</strong>(Local Area Network).<h4 id="Installing-Step"><a href="#Installing-Step" class="headerlink" title="Installing Step:"></a>Installing Step:</h4></li>
-<li><font color="red"><strong>First Step:</strong></font> Download JetPack<ul>
+<li><p>An <strong>desktop or laptop computer</strong> with an Intel or <strong>AMD x86 processor</strong>.</p>
+</li>
+<li><p>A <strong>Micro USB</strong> and An <strong>Ethernet cable</strong> which will connect your PC and Jetson TX2.</p>
+</li>
+<li><p><strong>LAN</strong>(Local Area Network).</p>
+<h4 id="Installing-Step"><a href="#Installing-Step" class="headerlink" title="Installing Step:"></a>Installing Step:</h4></li>
+<li><p><font color="red"><strong>First Step:</strong></font> Download JetPack</p>
+<ul>
 <li>You can download JetPack3.1(L4T 28.1) form <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank" rel="noopener">https://developer.nvidia.com/embedded/jetpack</a>.</li>
 <li>If you are Chinese, it maybe download slowly, so I show you a BaiduPan which is other developer put it up. Link:  <a href="https://pan.baidu.com/s/1o7Nfa10" target="_blank" rel="noopener">https://pan.baidu.com/s/1o7Nfa10</a> Password: r2mt.</li>
 </ul>
@@ -556,28 +677,38 @@
 </li>
 <li><p>Run it.<br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">3.  &lt;font color=red&gt;**Third Step:**&lt;/font&gt; Installing Interface</span><br><span class="line">    - Read and watch it conscientiously. If it is no choice for you, you can **click next** no worry about it.</span><br><span class="line">    - Full install or make your choice. As for me, I choosed no action OpenCV because this version called **OpenCV4Tegra** and some libraries require different modules and such that require upstream OpenCV versions.</span><br><span class="line">![InstallFace](https://upload-images.jianshu.io/upload_images/9830587-8b92b3183a13185c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - Accept **all licenses**.</span><br><span class="line">    - Select the **network layout**(I recommend you select the first way.).</span><br><span class="line">![002.png](https://upload-images.jianshu.io/upload_images/9830587-d23dbdac14611b0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">     - Then you will select the network interface and it will show that all the **network card** in your PC. You can run the **`ifconfig`** command on your PC terminal, and choose the device which has IP net or is in your LAN. Such like this:</span><br><span class="line">![Network Device](https://upload-images.jianshu.io/upload_images/9830587-66f7f8c9aa995230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - So you need to choose the wlp4s0 device.(The picture is catch by Internet, not my PC show. You should make choice depending on your PC.)</span><br><span class="line">![003.png](https://upload-images.jianshu.io/upload_images/9830587-345ca456dd9257ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - Clicking the next, and you will obtain the interface from terminal where show you how to put your Jetson TX2 to force **USB Recovery Mode** and if you are ready, press the **Enter key**.</span><br><span class="line">        1. **Power off your device**, the best way you do is that shutdown your Jetson TX2 and remove the power adapter for 3 seconds.</span><br><span class="line">        2. Connect **Your PC** up to **TX2** with **Micro-USB**.</span><br><span class="line">        3. **Power on your device**, and **immediately press and hold** the **RECOVERY** button(REC on your board), meanwhile press the **RESET**(RES on your board) button and release it. If you see the TX2 board flash it&apos;s light for a while, that means that you are successful in Recovery Mode.</span><br><span class="line">![004.png](https://upload-images.jianshu.io/upload_images/9830587-2a0a8d188942f428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">        4. Also you can run `lsusb` in your PC terminal to show whether you are successful.(You can also skip this step.)</span><br><span class="line">![005.png](https://upload-images.jianshu.io/upload_images/9830587-b8b7ced8966c8119.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - Installing Process will spend some time, then the Jetson TX2 will **power on** and your PC will connect it by SSH(automatic).</span><br><span class="line">![006.png](https://upload-images.jianshu.io/upload_images/9830587-d72b8121cc6d4110.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)</span><br><span class="line">    - Finish in installing and you can **remove all packages** about JetPack.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 2.Install Tensorflow:</span><br><span class="line">&amp;emsp;&amp;emsp;TensorFlow is one of the major deep learning systems. Created at Google, it is an open-source software library for machine intelligence. The Jetson TX2 ships with TensorRT. TensorRT is what is called an “Inference Engine“, the idea being that large machine learning systems can train models which are then transferred over and “run” on the Jetson.</span><br><span class="line">&lt;br&gt;&amp;emsp;&amp;emsp;There are two ways to install Tensorflow in Jetson TX2, this article just show you install by wheel file. Because when I build the tensorflow by myself, I got a error: **locale en_US**, the issue address: https://github.com/bazelbuild/bazel/issues/4483.</span><br><span class="line">#### Build Information and Tensorflow Version:</span><br><span class="line">- L4T 28.1 (JetPack 3.1)</span><br><span class="line">- CUDA 8.0</span><br><span class="line">- cuDNN 6.0</span><br><span class="line">* Tensorflow Version 1.3.0</span><br><span class="line">* Built with CUDA support</span><br><span class="line">#### Install Preparation:</span><br><span class="line">1. Download the wheel file from https://github.com/jetsonhacks/installTensorFlowJetsonTX.git.</span><br><span class="line">2. Install the matching pip for your Python installation and install tensorflow_wheel_file in your download path. </span><br><span class="line">&lt;br&gt;If you are Chinese, you can choose update your apt-sources like the 3 step next. </span><br><span class="line">    - **Python 2.7**</span><br></pre></td></tr></table></figure>
+
 <p>  sudo apt-get install -y python-pip python-dev<br>  pip install <tensorflow_wheel_file></tensorflow_wheel_file></p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- **Python 3.5**</span><br></pre></td></tr></table></figure>
+
 <p>  sudo apt-get install -y python3-pip python3-dev<br>  pip3 install <tensorflow_wheel_file></tensorflow_wheel_file></p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3. **Update apt-sources:(For Chinese)**</span><br><span class="line">    - CD your apt-sources path.</span><br></pre></td></tr></table></figure>
+
 <p>  cd /etc/apt</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- Edit the sources file.</span><br><span class="line">    1. `sudo gedit ./sources.list`</span><br><span class="line">    2. Replace all the text by this:</span><br></pre></td></tr></table></figure>
+
 <p>  deb <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty main multiverse restricted universe<br>  deb <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty-backports main multiverse restricted universe<br>  deb <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty-proposed main multiverse restricted universe<br>  deb <a href="http://mirrors.ustc.edu.cn/ubuntu-ports" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports</a> trusty-security main multiverse restricted universe<br>  deb <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty-updates main multiverse restricted universe<br>  deb-src <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty main multiverse restricted universe<br>  deb-src <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty-backports main multiverse restricted universe<br>  deb-src <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty-proposed main multiverse restricted universe<br>  deb-src <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty-security main multiverse restricted universe<br>  deb-src <a href="http://mirrors.ustc.edu.cn/ubuntu-ports/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports/</a> trusty-updates main multiverse restricted universe</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- Update apt-sources.</span><br></pre></td></tr></table></figure>
+
 <p>  sudo apt-get update</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        </span><br><span class="line">## 3.Build OpenCV:</span><br><span class="line">#### Background:</span><br><span class="line">&amp;emsp;&amp;emsp;JetPack can install a CPU and GPU accelerated version of the OpenCV libraries, called OpenCV4Tegra, on the Jetson. OpenCV4Tegra is version 2.4.13 as of this writing. This is great for many applications, especially when you are writing your own apps. However, some libraries require different modules and such that require upstream OpenCV versions.</span><br><span class="line">#### Installation:</span><br><span class="line">- Download the sources and build OpenCV:</span><br></pre></td></tr></table></figure>
+
 <p>git clone <a href="https://github.com/jetsonhacks/buildOpenCVTX2.git" target="_blank" rel="noopener">https://github.com/jetsonhacks/buildOpenCVTX2.git</a><br>cd buildOpenCVTX2<br>./buildOpenCV.sh</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**Note:** If you need the OpenCV which is also working in **python3**, you should open the buildOpenCV.sh file and change it like this:</span><br></pre></td></tr></table></figure>
+
 <p>Change the BUILD_opencv_python3=OFF to ON<br>Also you can make the building in python2 OFF</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- CD your download path and make bulid:</span><br></pre></td></tr></table></figure>
+
 <p>cd ~/opencv/build<br>sudo make install</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- Check your library vaild:</span><br><span class="line">    ```python3</span><br><span class="line">    import cv2</span><br><span class="line">    cv2.__version__</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 </li>
 </ol>
 <h2 id="Note-1"><a href="#Note-1" class="headerlink" title="Note:"></a>Note:</h2><h3 id="1-Use-GStreamer-and-OpenCV-Capture-the-Image-of-Camera"><a href="#1-Use-GStreamer-and-OpenCV-Capture-the-Image-of-Camera" class="headerlink" title="1.Use GStreamer and OpenCV Capture the Image of Camera"></a>1.Use GStreamer and OpenCV Capture the Image of Camera</h3><ul>
 <li>As I think, there are so many people who have theirselves tasks or goals, so I copy other developer’s code to show how to use the camera in Jetson TX2. What you need is up to you.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"># --------------------------------------------------------</span><br><span class="line"># Camera sample code for Tegra X2/X1</span><br><span class="line">#</span><br><span class="line"># This program could capture and display video from</span><br><span class="line"># IP CAM, USB webcam, or the Tegra onboard camera.</span><br><span class="line"># Refer to the following blog post for how to set up</span><br><span class="line"># and run the code:</span><br><span class="line">#   https://jkjung-avt.github.io/tx2-camera-with-python/</span><br><span class="line">#</span><br><span class="line"># Written by JK Jung &lt;jkjung13@gmail.com&gt;</span><br><span class="line"># --------------------------------------------------------</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">import argparse</span><br><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">windowName = &quot;CameraDemo&quot;</span><br><span class="line"></span><br><span class="line">def parse_args():</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Parse input arguments</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    parser = argparse.ArgumentParser(description=</span><br><span class="line">                                     &quot;Capture and display live camera video on Jetson TX2/TX1&quot;)</span><br><span class="line">    parser.add_argument(&quot;--rtsp&quot;, dest=&quot;use_rtsp&quot;,</span><br><span class="line">                        help=&quot;use IP CAM (remember to also set --uri)&quot;,</span><br><span class="line">                        action=&quot;store_true&quot;)</span><br><span class="line">    parser.add_argument(&quot;--uri&quot;, dest=&quot;rtsp_uri&quot;,</span><br><span class="line">                        help=&quot;RTSP URI string, e.g. rtsp://192.168.1.64:554&quot;,</span><br><span class="line">                        default=None, type=str)</span><br><span class="line">    parser.add_argument(&quot;--latency&quot;, dest=&quot;rtsp_latency&quot;,</span><br><span class="line">                        help=&quot;latency in ms for RTSP [200]&quot;,</span><br><span class="line">                        default=200, type=int)</span><br><span class="line">    parser.add_argument(&quot;--usb&quot;, dest=&quot;use_usb&quot;,</span><br><span class="line">                        help=&quot;use USB webcam (remember to also set --vid)&quot;,</span><br><span class="line">                        action=&quot;store_true&quot;)</span><br><span class="line">    parser.add_argument(&quot;--vid&quot;, dest=&quot;video_dev&quot;,</span><br><span class="line">                        help=&quot;video device # of USB webcam (/dev/video?) [1]&quot;,</span><br><span class="line">                        default=1, type=int)</span><br><span class="line">    parser.add_argument(&quot;--width&quot;, dest=&quot;image_width&quot;,</span><br><span class="line">                        help=&quot;image width [1920]&quot;,</span><br><span class="line">                        default=1920, type=int)</span><br><span class="line">    parser.add_argument(&quot;--height&quot;, dest=&quot;image_height&quot;,</span><br><span class="line">                        help=&quot;image width [1080]&quot;,</span><br><span class="line">                        default=1080, type=int)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    return args</span><br><span class="line"></span><br><span class="line">def open_cam_rtsp(uri, width, height, latency):</span><br><span class="line">    gst_str = (&quot;rtspsrc location=&#123;&#125; latency=&#123;&#125; ! rtph264depay ! h264parse ! omxh264dec ! &quot;</span><br><span class="line">               &quot;nvvidconv ! video/x-raw, width=(int)&#123;&#125;, height=(int)&#123;&#125;, format=(string)BGRx ! &quot;</span><br><span class="line">               &quot;videoconvert ! appsink&quot;).format(uri, latency, width, height)</span><br><span class="line">    return cv2.VideoCapture(gst_str, cv2.CAP_GSTREAMER)</span><br><span class="line"></span><br><span class="line">def open_cam_usb(dev, width, height):</span><br><span class="line">    # We want to set width and height here, otherwise we could just do:</span><br><span class="line">    #     return cv2.VideoCapture(dev)</span><br><span class="line">    gst_str = (&quot;v4l2src device=/dev/video&#123;&#125; ! &quot;</span><br><span class="line">               &quot;video/x-raw, width=(int)&#123;&#125;, height=(int)&#123;&#125;, format=(string)RGB ! &quot;</span><br><span class="line">               &quot;videoconvert ! appsink&quot;).format(dev, width, height)</span><br><span class="line">    return cv2.VideoCapture(gst_str, cv2.CAP_GSTREAMER)</span><br><span class="line"></span><br><span class="line">def open_cam_onboard(width, height):</span><br><span class="line">    # On versions of L4T previous to L4T 28.1, flip-method=2</span><br><span class="line">    # Use Jetson onboard camera</span><br><span class="line">    gst_str = (&quot;nvcamerasrc ! &quot;</span><br><span class="line">               &quot;video/x-raw(memory:NVMM), width=(int)2592, height=(int)1458, format=(string)I420, framerate=(fraction)30/1 ! &quot;</span><br><span class="line">               &quot;nvvidconv ! video/x-raw, width=(int)&#123;&#125;, height=(int)&#123;&#125;, format=(string)BGRx ! &quot;</span><br><span class="line">               &quot;videoconvert ! appsink&quot;).format(width, height)</span><br><span class="line">    return cv2.VideoCapture(gst_str, cv2.CAP_GSTREAMER)</span><br><span class="line"></span><br><span class="line">def open_window(windowName, width, height):</span><br><span class="line">    cv2.namedWindow(windowName, cv2.WINDOW_NORMAL)</span><br><span class="line">    cv2.resizeWindow(windowName, width, height)</span><br><span class="line">    cv2.moveWindow(windowName, 0, 0)</span><br><span class="line">    cv2.setWindowTitle(windowName, &quot;Camera Demo for Jetson TX2/TX1&quot;)</span><br><span class="line"></span><br><span class="line">def read_cam(windowName, cap):</span><br><span class="line">    showHelp = True</span><br><span class="line">    showFullScreen = False</span><br><span class="line">    helpText = &quot;&apos;Esc&apos; to Quit, &apos;H&apos; to Toggle Help, &apos;F&apos; to Toggle Fullscreen&quot;</span><br><span class="line">    font = cv2.FONT_HERSHEY_PLAIN</span><br><span class="line">    while True:</span><br><span class="line">        if cv2.getWindowProperty(windowName, 0) &lt; 0: # Check to see if the user closed the window</span><br><span class="line">            # This will fail if the user closed the window; Nasties get printed to the console</span><br><span class="line">            break;</span><br><span class="line">        ret_val, displayBuf = cap.read();</span><br><span class="line">        if showHelp == True:</span><br><span class="line">            cv2.putText(displayBuf, helpText, (11,20), font, 1.0, (32,32,32), 4, cv2.LINE_AA)</span><br><span class="line">            cv2.putText(displayBuf, helpText, (10,20), font, 1.0, (240,240,240), 1, cv2.LINE_AA)</span><br><span class="line">        cv2.imshow(windowName, displayBuf)</span><br><span class="line">        key = cv2.waitKey(10)</span><br><span class="line">        if key == 27: # ESC key: quit program</span><br><span class="line">            break</span><br><span class="line">        elif key == ord(&apos;H&apos;) or key == ord(&apos;h&apos;): # toggle help message</span><br><span class="line">            showHelp = not showHelp</span><br><span class="line">        elif key == ord(&apos;F&apos;) or key == ord(&apos;f&apos;): # toggle fullscreen</span><br><span class="line">            showFullScreen = not showFullScreen</span><br><span class="line">            if showFullScreen == True: </span><br><span class="line">                cv2.setWindowProperty(windowName, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)</span><br><span class="line">            else:</span><br><span class="line">                cv2.setWindowProperty(windowName, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_NORMAL) </span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    args = parse_args()</span><br><span class="line">    print(&quot;Called with args:&quot;)</span><br><span class="line">    print(args)</span><br><span class="line">    print(&quot;OpenCV version: &#123;&#125;&quot;.format(cv2.__version__))</span><br><span class="line"></span><br><span class="line">    if args.use_rtsp:</span><br><span class="line">        cap = open_cam_rtsp(args.rtsp_uri, args.image_width, args.image_height, args.rtsp_latency)</span><br><span class="line">    elif args.use_usb:</span><br><span class="line">        cap = open_cam_usb(args.video_dev, args.image_width, args.image_height)</span><br><span class="line">    else: # by default, use the Jetson onboard camera</span><br><span class="line">        cap = open_cam_onboard(args.image_width, args.image_height)</span><br><span class="line"></span><br><span class="line">    if not cap.isOpened():</span><br><span class="line">        sys.exit(&quot;Failed to open camera!&quot;)</span><br><span class="line"></span><br><span class="line">    open_window(windowName, args.image_width, args.image_height)</span><br><span class="line">    read_cam(windowName, cap)</span><br><span class="line">    </span><br><span class="line">    cap.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h3 id="2-Opening-the-Max-performance-of-TX2"><a href="#2-Opening-the-Max-performance-of-TX2" class="headerlink" title="2. Opening the Max performance of TX2"></a>2. Opening the Max performance of TX2</h3><ul>
@@ -653,9 +784,11 @@
 </li>
 <li><p>Show the Information of GPU:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo tegrastats</span><br><span class="line">#If you see some cpus not opening, you can run like this:</span><br><span class="line">sudo su</span><br><span class="line">echo 1 &gt; /sys/devices/system/cpu/cpu1/online</span><br><span class="line"></span><br><span class="line">#执行~/jetson_clocks.sh可以开启最大频率</span><br><span class="line">~/jetson_clocks.sh</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h3 id="3-About-Host-PC-Failed-to-Fetch-sudo-apt-get-update-failed"><a href="#3-About-Host-PC-Failed-to-Fetch-sudo-apt-get-update-failed" class="headerlink" title="3. About Host PC Failed to Fetch(sudo apt-get update failed)"></a>3. About Host PC Failed to Fetch(<strong>sudo apt-get update failed</strong>)</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove .*:arm64</span><br><span class="line">sudo dpkg --remove-architecture arm64</span><br><span class="line">#Then you can update your apt.</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1379,7 +1512,7 @@
         }, 300);
       }).append(e);
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

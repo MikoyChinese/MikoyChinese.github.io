@@ -16,7 +16,7 @@
 
 <html class="theme-next mist use-motion" lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -173,7 +173,124 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container {
+  overflow: auto hidden;
+}
+
+mjx-container + br {
+  display: none;
+}
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -182,7 +299,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -506,15 +623,21 @@
       
         <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction:"></a>Introduction:</h2><p>&emsp;&emsp;Recently, I have tried to record some infomations occurred during progress running automatically. Because the main language is <strong>Python</strong>, so I choose the <strong>logging</strong> module to achieve it.</p>
 <a id="more"></a>
+
 <p>&emsp;&emsp;Firstly, I can record log when I use logging module. But when I tried to write log infomation two times or more, I found that the log file will be re-written with cleaning up all my infomation written last time. And then I have tested it by making two progress to write log infomating using logging module to one log file. This time I found that if the two progresses write infomation at the same time, Python Global Interpreter Lock(<strong>GIL</strong>)  will prevent multiple progress form executing the I/O operations. So the fact is just one progress writted log infomation in log file.</p>
-<p>&emsp;&emsp;But why the log file will be cleaned up? I searched my question in google and found the result. Because the logging module include <strong>class TimedRotatingFileHandler(BaseRotatingHandler)</strong>, and we see it sources code, strengthen the reson code:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def doRollover(self):</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    dfn = self.rotation_filename(self.baseFilename + &quot;.&quot; +</span><br><span class="line">                                     time.strftime(self.suffix, timeTuple))</span><br><span class="line">    if os.path.exists(dfn):</span><br><span class="line">        os.remove(dfn)</span><br><span class="line">    self.rotate(self.baseFilename, dfn)</span><br><span class="line">    if self.backupCount &gt; 0:</span><br><span class="line">        for s in self.getFilesToDelete():</span><br><span class="line">            os.remove(s)        </span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;But why the log file will be cleaned up? I searched my question in google and found the result. Because the logging module include <strong>class TimedRotatingFileHandler(BaseRotatingHandler)</strong>, and we see it sources code, strengthen the reson code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def doRollover(self):</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    dfn = self.rotation_filename(self.baseFilename + &quot;.&quot; +</span><br><span class="line">                                     time.strftime(self.suffix, timeTuple))</span><br><span class="line">    if os.path.exists(dfn):</span><br><span class="line">        os.remove(dfn)</span><br><span class="line">    self.rotate(self.baseFilename, dfn)</span><br><span class="line">    if self.backupCount &gt; 0:</span><br><span class="line">        for s in self.getFilesToDelete():</span><br><span class="line">            os.remove(s)        </span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
 <p>&emsp;&emsp;As you see, it will remove the log file if it existed. So we try to create a class like <strong>TimedRotatingFileHandler</strong>, but support for <strong>Muti-Progress</strong>.</p>
 <h3 id="The-coding-thinking"><a href="#The-coding-thinking" class="headerlink" title="The coding thinking:"></a>The coding thinking:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">a[Log file Request] --&gt; b&#123;shouldRollover?&#125;</span><br><span class="line">b --&gt;|True| c[Create a new log file]</span><br><span class="line">b --&gt;|False| d[file.stream.close]</span><br><span class="line">d --&gt;f[open log file]</span><br><span class="line">f --&gt; g[if file exists, create a symlink to the currentTime log file and make the I/O stream point it.]</span><br></pre></td></tr></table></figure>
+
 <p>&emsp;&emsp;When a progress request I/O operation, firstly judge it whether should Rollover? <code>if this log file is the currenttime file you want to record it.</code> if is True return True, while False return False. And the doRollover receive the parameter to do rollover. When it rollover, it makes a symlink pointing to the current time file and then record it.</p>
 <h3 id="The-main-code"><a href="#The-main-code" class="headerlink" title="The main code:"></a>The main code:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">def shouldRollover(self, record):</span><br><span class="line">        if self.currentFileName != self._compute_fn():</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def _open(self):</span><br><span class="line">        if self.encoding is None:</span><br><span class="line">            stream = open(self.currentFileName, self.mode)</span><br><span class="line">        else:</span><br><span class="line">            stream = codecs.open(self.currentFileName, self.mode, self.encoding)</span><br><span class="line">        # simulate file name structure of `logging.TimedRotatingFileHandler`</span><br><span class="line">        if os.path.exists(self.baseFilename):</span><br><span class="line">            try:</span><br><span class="line">                os.remove(self.baseFilename)</span><br><span class="line">            except OSError:</span><br><span class="line">                pass</span><br><span class="line">        try:</span><br><span class="line">            # Create the symlink point the lastest log file.</span><br><span class="line">            os.symlink(self.currentFileName, self.baseFilename)</span><br><span class="line">        except OSError:</span><br><span class="line">            pass</span><br><span class="line">        return stream</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
 <h3 id="The-whole-source-code"><a href="#The-whole-source-code" class="headerlink" title="The whole source code:"></a>The whole source code:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">class MultiProcessSafeDailyRotatingFileHandler(BaseRotatingHandler):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Similar with `logging.TimedRotatingFileHandler`, while this one is</span><br><span class="line">    - Multi process safe</span><br><span class="line">    - Rotate at midnight only</span><br><span class="line">    - Utc not supported</span><br><span class="line">    - This log will create day by day.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init__(self, filename, encoding=None, delay=False, utc=False, **kwargs):</span><br><span class="line">        self.utc = utc</span><br><span class="line">        self.suffix = &quot;%Y%m%d&quot;</span><br><span class="line">        self.baseFilename = os.path.abspath(filename)</span><br><span class="line">        self.currentFileName = self._compute_fn()</span><br><span class="line">        BaseRotatingHandler.__init__(self, filename, &apos;a&apos;, encoding, delay)</span><br><span class="line"></span><br><span class="line">    def shouldRollover(self, record):</span><br><span class="line">        if self.currentFileName != self._compute_fn():</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    def doRollover(self):</span><br><span class="line">        if self.stream:</span><br><span class="line">            self.stream.close()</span><br><span class="line">            self.stream = None</span><br><span class="line">        self.currentFileName = self._compute_fn()</span><br><span class="line"></span><br><span class="line">    def _compute_fn(self):</span><br><span class="line">        return self.baseFilename + &quot;.&quot; + time.strftime(self.suffix, time.localtime())</span><br><span class="line"></span><br><span class="line">    def _open(self):</span><br><span class="line">        if self.encoding is None:</span><br><span class="line">            stream = open(self.currentFileName, self.mode)</span><br><span class="line">        else:</span><br><span class="line">            stream = codecs.open(self.currentFileName, self.mode, self.encoding)</span><br><span class="line">        # simulate file name structure of `logging.TimedRotatingFileHandler`</span><br><span class="line">        if os.path.exists(self.baseFilename):</span><br><span class="line">            try:</span><br><span class="line">                os.remove(self.baseFilename)</span><br><span class="line">            except OSError:</span><br><span class="line">                pass</span><br><span class="line">        try:</span><br><span class="line">            # Create the symlink point the lastest log file.</span><br><span class="line">            os.symlink(self.currentFileName, self.baseFilename)</span><br><span class="line">        except OSError:</span><br><span class="line">            pass</span><br><span class="line">        return stream</span><br></pre></td></tr></table></figure>
+
 <h2 id="Finally"><a href="#Finally" class="headerlink" title="Finally"></a>Finally</h2><p>&emsp;&emsp;Let me tell you some usages of logging module: This module defines functions and classes which implement a flexible event logging system for applications and libraries. The key benefit of having the logging API provided by a standard library module is that all Python modules can participate in logging, so your application log can include your own messages integrated with messages from third-party modules.</p>
-<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h3><p>logger —&gt; handler —&gt; formatter —&gt; output</p>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h3><p>logger –&gt; handler –&gt; formatter –&gt; output</p>
 <ol>
 <li><p>Create logger</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logger = logging.getLogger(&apos;user&apos;)</span><br><span class="line">logger.setLevel(&apos;DEBUG&apos;)</span><br></pre></td></tr></table></figure>
@@ -527,9 +650,11 @@
 </li>
 <li><p>Add to logger</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger.addHandler(handler)</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <h2 id="My-simple"><a href="#My-simple" class="headerlink" title="My simple:"></a>My simple:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">    Author: Mikoy</span><br><span class="line">    Github: github.com/MikoyChinese</span><br><span class="line">    The name of the log file changes automatically based on time.</span><br><span class="line">    LOGGING_CONFIG: the config file about the logging.</span><br><span class="line">    &lt;logging.config.dictConfig&gt;: such like next,</span><br><span class="line">    logger --&gt; handler --&gt; formatter --&gt; output</span><br><span class="line">    # Create logger</span><br><span class="line">    logger = logging.getLogger(&apos;user&apos;)</span><br><span class="line">    logger.setLevel(&apos;DEBUG&apos;)</span><br><span class="line">    # Create handler and set leverl</span><br><span class="line">    handler = logging.StreamHandler()</span><br><span class="line">    handler.setLevel(&apos;DEBUG&apos;)</span><br><span class="line">    # Create formatter</span><br><span class="line">    handler.setFormatter(&apos;%(levelname)s: %(message)s&apos;)</span><br><span class="line">    # Add to logger</span><br><span class="line">    logger.addHandler(handler)</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from logging.handlers import BaseRotatingHandler</span><br><span class="line">import os, time, codecs, logging, logging.config</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyLogging(object):</span><br><span class="line">    def __init__(self, logger_name=&apos;user&apos;):</span><br><span class="line">        # 1.The configuration below has no file to output.</span><br><span class="line">        self.LOGGING_CONFIG = &#123;</span><br><span class="line">            &apos;version&apos;: 1,</span><br><span class="line">            &apos;disable_existing_loggers&apos;: False,</span><br><span class="line">            &apos;formatters&apos;: &#123;</span><br><span class="line">                &apos;standard&apos;: &#123;</span><br><span class="line">                    &apos;format&apos;: &apos;[%(levelname)s] %(asctime)s %(module)s %(&apos;</span><br><span class="line">                              &apos;process)d %(thread)d: %(message)s&apos;,</span><br><span class="line">                    &apos;datefmt&apos;: &apos;%H:%M:%S&apos;</span><br><span class="line">                &#125;,</span><br><span class="line">                &apos;simple&apos;: &#123;</span><br><span class="line">                    &apos;format&apos;: &apos;[%(levelname)s]: %(message)s&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &apos;handlers&apos;: &#123;</span><br><span class="line">                &apos;console&apos;: &#123;</span><br><span class="line">                    &apos;level&apos;: &apos;DEBUG&apos;,</span><br><span class="line">                    &apos;class&apos;: &apos;logging.StreamHandler&apos;,</span><br><span class="line">                    &apos;formatter&apos;: &apos;simple&apos;</span><br><span class="line">                &#125;,</span><br><span class="line">                &apos;default&apos;: &#123;</span><br><span class="line">                    &apos;level&apos;: &apos;DEBUG&apos;,</span><br><span class="line">                    &apos;class&apos;: &apos;loggingModule.MultiProcessSafeDailyRotatingFileHandler&apos;,</span><br><span class="line">                    &apos;formatter&apos;: &apos;standard&apos;,</span><br><span class="line">                    &apos;filename&apos;: &apos;./log/info.log&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &apos;loggers&apos;: &#123;</span><br><span class="line">                &apos;user&apos;: &#123;</span><br><span class="line">                    &apos;level&apos;: &apos;DEBUG&apos;,</span><br><span class="line">                    &apos;handlers&apos;: [&apos;console&apos;, &apos;default&apos;]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        # 2. To get the absolute path of the log file.</span><br><span class="line">        # Log file is stored under the &apos;log&apos; folder. If it not existed,</span><br><span class="line">        # create it auto.</span><br><span class="line">        dir_path = os.path.join(os.path.dirname(__file__), &apos;log&apos;)</span><br><span class="line">        if not os.path.exists(dir_path):</span><br><span class="line">            os.makedirs(dir_path)</span><br><span class="line">        # 3. Loading the config, and make it effect.</span><br><span class="line">        # This command can not be executed after the logging.getLogger function</span><br><span class="line">        # because there is no specific logger name.</span><br><span class="line">        logging.config.dictConfig(self.LOGGING_CONFIG)</span><br><span class="line">        self.logger = logging.getLogger(logger_name)  # return a logger</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MultiProcessSafeDailyRotatingFileHandler(BaseRotatingHandler):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Similar with `logging.TimedRotatingFileHandler`, while this one is</span><br><span class="line">    - Multi process safe</span><br><span class="line">    - Rotate at midnight only</span><br><span class="line">    - Utc not supported</span><br><span class="line">    - This log will create day by day.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init__(self, filename, encoding=None, delay=False, utc=False, **kwargs):</span><br><span class="line">        self.utc = utc</span><br><span class="line">        self.suffix = &quot;%Y%m%d&quot;</span><br><span class="line">        self.baseFilename = os.path.abspath(filename)</span><br><span class="line">        self.currentFileName = self._compute_fn()</span><br><span class="line">        BaseRotatingHandler.__init__(self, filename, &apos;a&apos;, encoding, delay)</span><br><span class="line"></span><br><span class="line">    def shouldRollover(self, record):</span><br><span class="line">        if self.currentFileName != self._compute_fn():</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    def doRollover(self):</span><br><span class="line">        if self.stream:</span><br><span class="line">            self.stream.close()</span><br><span class="line">            self.stream = None</span><br><span class="line">        self.currentFileName = self._compute_fn()</span><br><span class="line"></span><br><span class="line">    def _compute_fn(self):</span><br><span class="line">        return self.baseFilename + &quot;.&quot; + time.strftime(self.suffix, time.localtime())</span><br><span class="line"></span><br><span class="line">    def _open(self):</span><br><span class="line">        if self.encoding is None:</span><br><span class="line">            stream = open(self.currentFileName, self.mode)</span><br><span class="line">        else:</span><br><span class="line">            stream = codecs.open(self.currentFileName, self.mode, self.encoding)</span><br><span class="line">        # simulate file name structure of `logging.TimedRotatingFileHandler`</span><br><span class="line">        if os.path.exists(self.baseFilename):</span><br><span class="line">            try:</span><br><span class="line">                os.remove(self.baseFilename)</span><br><span class="line">            except OSError:</span><br><span class="line">                pass</span><br><span class="line">        try:</span><br><span class="line">            # Create the symlink point the lastest log file.</span><br><span class="line">            os.symlink(self.currentFileName, self.baseFilename)</span><br><span class="line">        except OSError:</span><br><span class="line">            pass</span><br><span class="line">        return stream</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    mylogging = MyLogging(logger_name=&apos;user&apos;)  # This is a customized class;</span><br><span class="line">    while 1:</span><br><span class="line">        mylogging.logger.debug(&apos;%s&apos; % time.time())</span><br><span class="line">        time.sleep(5)</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1255,7 +1380,7 @@
         }, 300);
       }).append(e);
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>
