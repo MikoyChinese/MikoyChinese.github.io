@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.mikoychinese.top/post/20200705-2020-2nd-quarter-summary-and-belief/</loc>
+    <lastmod>2020-07-11</lastmod>
+  </url>  <url>
     <loc>https://www.mikoychinese.top/post/20200711-Edge-Inference-Toolkit-Openvino-vs-TensorRT/</loc>
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
@@ -25,13 +28,13 @@
     <loc>https://www.mikoychinese.top/post/20191016-Install-OpenCV-4-on-Ubuntu-18-04/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
-    <loc>https://www.mikoychinese.top/post/20190222-Ubuntu-Remote-without-installing-desktop/</loc>
-    <lastmod>2019-11-22</lastmod>
-  </url>  <url>
     <loc>https://www.mikoychinese.top/post/20190921-Remote-machine-running-ROS-nodes/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
     <loc>https://www.mikoychinese.top/post/20181114-ShadowsocksR-Tunnel-Proxy-TO-Bypass-GFW/</loc>
+    <lastmod>2019-11-22</lastmod>
+  </url>  <url>
+    <loc>https://www.mikoychinese.top/post/20190222-Ubuntu-Remote-without-installing-desktop/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
     <loc>https://www.mikoychinese.top/post/20190920-V2Ray-Document/</loc>
@@ -40,10 +43,10 @@
     <loc>https://www.mikoychinese.top/post/20180316-build-tensorflow-from-jetsonTx2/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
-    <loc>https://www.mikoychinese.top/post/20190323-2019-st-quarter-summary-and-insurance/</loc>
+    <loc>https://www.mikoychinese.top/post/20190101-2018_review/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
-    <loc>https://www.mikoychinese.top/post/20190101-2018_review/</loc>
+    <loc>https://www.mikoychinese.top/post/20190323-2019-st-quarter-summary-and-insurance/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
     <loc>https://www.mikoychinese.top/post/20180204-Git-s-Notes-And-Records/</loc>
