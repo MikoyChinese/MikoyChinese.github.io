@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="eEPY800rLu0OQFn-xSNZlAxi8WJ24Dh0PNHx9hQKfm0">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="SVyQBgwT88">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/mlife.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'UWUM0IPSUB',
+      apiKey: '38ed7e353834005a3c755dd19dcb6b38',
+      indexName: 'content',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"Search for ...","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="&amp;emsp;&amp;emsp;That is no doubt that artificial intelligence has created real value in the digital industries such as media and advertising, finance and retail with great promises. While deep learning ha">
+<meta name="keywords" content="wiki,TensorRT,OpenVino,Edge device">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Edge Inference Toolkit: Openvino vs TensorRT">
+<meta property="og:url" content="https://www.mikoychinese.top/post/20200711-Edge-Inference-Toolkit-Openvino-vs-TensorRT/index.html">
+<meta property="og:site_name" content="Mikoy Chinese | 煮酒客">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;That is no doubt that artificial intelligence has created real value in the digital industries such as media and advertising, finance and retail with great promises. While deep learning ha">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-07-11T11:49:44.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Edge Inference Toolkit: Openvino vs TensorRT">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;That is no doubt that artificial intelligence has created real value in the digital industries such as media and advertising, finance and retail with great promises. While deep learning ha">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.mikoychinese.top/post/20200711-Edge-Inference-Toolkit-Openvino-vs-TensorRT/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Edge Inference Toolkit: Openvino vs TensorRT | Mikoy Chinese | 煮酒客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container {
+  overflow: auto hidden;
+}
+
+mjx-container + br {
+  display: none;
+}
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikoy Chinese | 煮酒客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">I am the man of fortune, and I must seek my fortune.</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.mikoychinese.top/post/20200711-Edge-Inference-Toolkit-Openvino-vs-TensorRT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikoy Chinese">
+      <meta itemprop="description" content="Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.">
+      <meta itemprop="image" content="/images/avatar_215x215.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikoy Chinese | 煮酒客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Edge Inference Toolkit: Openvino vs TensorRT
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-07-11 19:47:28 / Modified: 19:49:44" itemprop="dateCreated datePublished" datetime="2020-07-11T19:47:28+08:00">2020-07-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Wiki/" itemprop="url" rel="index"><span itemprop="name">Wiki</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/post/20200711-Edge-Inference-Toolkit-Openvino-vs-TensorRT/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/20200711-Edge-Inference-Toolkit-Openvino-vs-TensorRT/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;That is no doubt that artificial intelligence has created real value in the digital industries such as media and advertising, finance and retail with great promises. While deep learning has been widely applied in all walks of life, the hard truth is that using multiple, gigantic datasets to train or infer them still takes a ton of processing power. Processing an image or other data with a deep neural implies billions of operations, huge matrices of many dimensions being multiplied, inversed, reshaped, and fourier transformed.</p>
+<p>&emsp;&emsp;Clearly, for real-time applications such as facial recognition or the detection of defective products in a production line. It is important that the result is generated as quickly as possible, and without the need for an expensive and power hungry CPU or GPU. So I try to find the best way to solve these problem on edge device.</p>
+<p>&emsp;&emsp;In this paper, I will introduce Openvino and TensorRT for you, which are the deep learning inferencd engines on CPU or GPU in lower cost edge device. But firstly, you need to train your model by other deep learning platform such as Tensorflow or Pytorch. As for me, I obtain the original model trained by Pytorch in my local host with Nvidia 1080Ti and export it to ONNX format model for converting easily.</p>
+<a id="more"></a>
+
+<h4 id="Test-Environment"><a href="#Test-Environment" class="headerlink" title="Test Environment:"></a>Test Environment:</h4><ul>
+<li><strong>Host PC</strong>:<ul>
+<li><strong>CPU:</strong> Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz</li>
+<li><strong>GPU:</strong> Nvidia 1080Ti</li>
+<li>Pytorch 1.5.0 with CUDA 10.1 and cudnn7.6.2</li>
+<li>onnx 1.7.0</li>
+</ul>
+</li>
+<li><strong>Openvino edge device:</strong><ul>
+<li><strong>CPU:</strong> Intel Celeron J4105 Processor @ 1.50GHz</li>
+<li><strong>GPU:</strong> Intel® UHD Graphics 600</li>
+<li>Openvino version 2020.3</li>
+<li>OpenCL 1.2 NEO</li>
+</ul>
+</li>
+<li><strong>TensorRT edge device:</strong><ul>
+<li>Jetson Nano</li>
+<li><strong>CPU:</strong> Quad-core ARM® Cortex®-A57 MPCore processor</li>
+<li><strong>GPU:</strong> NVIDIA Maxwell™ architecture with 128 NVIDIA CUDA® cores 0.5 TFLOPs (FP16)</li>
+<li>JetPack 4.3 with CUDA 10.2 and TensorRT 7.1.0.16</li>
+</ul>
+</li>
+</ul>
+<h4 id="Pytorch-To-ONNX"><a href="#Pytorch-To-ONNX" class="headerlink" title="Pytorch To ONNX:"></a>Pytorch To ONNX:</h4><p>Pytorch has a easy way to export model to onnx.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">model_file = <span class="string">'./DFA_model_latest.pkl'</span></span><br><span class="line">model = torch.load(model_file)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set the model to inference mode</span></span><br><span class="line">model.eval()</span><br><span class="line"></span><br><span class="line"><span class="comment"># device depend on your train data type, such as cpu or cuda.</span></span><br><span class="line">device = torch.device(<span class="string">'cuda'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input to the model, eg: [None, 1, 288, 512]</span></span><br><span class="line">x = torch.randn(batch_size, <span class="number">1</span>, <span class="number">288</span>, <span class="number">512</span>, requires_grad=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set input list and ouput list.</span></span><br><span class="line">input_names = [<span class="string">'input'</span>]</span><br><span class="line">output_names =[<span class="string">'output'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Export the model</span></span><br><span class="line">torch.onnx.export(model,</span><br><span class="line">                  x,</span><br><span class="line">                  <span class="string">'DFA_model_latest.onnx'</span>,</span><br><span class="line">                  export_params=<span class="keyword">True</span>,</span><br><span class="line">                  opset_version=<span class="number">10</span>, <span class="comment"># default is 9.</span></span><br><span class="line">                  do_constant_folding=<span class="keyword">True</span>,</span><br><span class="line">                  input_names=input_names,</span><br><span class="line">                  output_names=output_names)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong> There are some pytorch operators which are not supported opset_version 9 and 10, and the lastest version is 11.(bilinear need opset_version 11. But for the openvino and tensorrt, the opset_version is not supported perfectly. You can try to export the model to 9, 10 and 11, and convert it all.)</p>
+<h4 id="OpenVino"><a href="#OpenVino" class="headerlink" title="OpenVino:"></a><a href="https://docs.openvinotoolkit.org/latest/index.html" title="OpenVino" target="_blank" rel="noopener">OpenVino</a>:</h4><p>OpenVINO™ toolkit quickly deploys applications and solutions that emulate human vision. Based on Convolutional Neural Networks (CNNs), the toolkit extends computer vision (CV) workloads across Intel® hardware, maximizing performance. The OpenVINO™ toolkit includes the Deep Learning Deployment Toolkit (DLDT).</p>
+<p>OpenVINO™ toolkit:</p>
+<ul>
+<li>Enables CNN-based deep learning inference on the edge</li>
+<li>Supports heterogeneous execution across an Intel® CPU, Intel® Integrated Graphics, Intel® FPGA, Intel® Movidius™ Neural Compute Stick, Intel® Neural Compute Stick 2 and Intel® Vision Accelerator Design with Intel® Movidius™ VPUs</li>
+<li>Speeds time-to-market via an easy-to-use library of computer vision functions and pre-optimized kernels</li>
+<li>Includes optimized calls for computer vision standards, including OpenCV* and OpenCL™</li>
+</ul>
+<h5 id="1-Install"><a href="#1-Install" class="headerlink" title="1. Install:"></a>1. Install:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. Download the openvino toolkit tar file from the following link.</span></span><br><span class="line">https://software.intel.com/en-us/openvino-toolkit/choose-download</span><br><span class="line"><span class="comment"># 2. Unpack the .tgz file.</span></span><br><span class="line">tar -zvxf l_openvino_toolkit_p_&lt;version&gt;.tgz</span><br><span class="line"><span class="comment"># 3. Go to the l_openvino_toolkit_p_&lt;version&gt; directory:</span></span><br><span class="line"><span class="built_in">cd</span> ./l_openvino_toolkit_p_&lt;version&gt;</span><br><span class="line"><span class="comment"># For me, I try this in docker, so I install the toolkit by silent.</span></span><br><span class="line"><span class="comment"># 4. change the config file and install by script file.</span></span><br><span class="line">sed -i <span class="string">'s/decline/accept/g'</span> silent.cfg</span><br><span class="line">./install.sh -s silent.cfg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. Install External Software Dependencies</span></span><br><span class="line"><span class="built_in">cd</span> /opt/intel/openvino/install_dependencies</span><br><span class="line">sudo -E ./install_openvino_dependencies.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. Set the Environment Variables. Append to .bashrc file.</span></span><br><span class="line"><span class="built_in">source</span> /opt/intel/openvino/bin/setupvars.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 7. Configure the Model Optimizer</span></span><br><span class="line"><span class="built_in">cd</span> /opt/intel/openvino/deployment_tools/model_optimizer/install_prerequisites</span><br><span class="line">sudo ./install_prerequisites.sh</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-Enable-Intel-GPU-device-in-openvino"><a href="#2-Enable-Intel-GPU-device-in-openvino" class="headerlink" title="2. Enable Intel GPU device in openvino:"></a>2. Enable Intel GPU device in openvino:</h5><p><strong>Note:</strong> If you wanna run Intel GPU in docker, please run the docker image with <code>--device /dev/dri</code> to make Intel GPU available in the container. Verify your intel gpu and opencl version by <code>clinfo</code> which can be installed with apt <code>sudo apt install clinfo</code>. There are two ways to install opencl for intel gpu, one is beignet, other is intel neo. For some old cpus, you only can install beignet-dev &gt; 1.3 to enable opencl for them.</p>
+<ol>
+<li>NEO:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. Go to the install_dependencies directory:</span></span><br><span class="line"><span class="built_in">cd</span> /opt/intel/openvino/install_dependencies/</span><br><span class="line"><span class="comment"># 2. Install the Intel® Graphics Compute Runtime for OpenCL™ driver components required to use the GPU plugin and write custom layers for Intel® Integrated Graphics:</span></span><br><span class="line">sudo -E ./install_NEO_OCL_driver.sh</span><br><span class="line"><span class="comment"># 3. Verify opencl infomation:</span></span><br><span class="line">clinfo</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Beignet:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####################</span></span><br><span class="line"><span class="comment">#   Ubuntu 16.04   #</span></span><br><span class="line"><span class="comment">####################</span></span><br><span class="line"><span class="comment"># For Ubuntu16.04, the default beignet package version is 1.1.2,</span></span><br><span class="line"><span class="comment"># it is not support for some old cpus, so you need to install beignet &gt; 1.3 as following:</span></span><br><span class="line">sudo add-apt-repository ppa:ikuya-fruitsbasket/beignet</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt install beignet</span><br><span class="line">sudo apt install beignet-dev</span><br><span class="line"><span class="comment"># Verify opencl:</span></span><br><span class="line">clinfo</span><br><span class="line"></span><br><span class="line"><span class="comment">####################</span></span><br><span class="line"><span class="comment">#   Ubuntu 18.04   #</span></span><br><span class="line"><span class="comment">####################</span></span><br><span class="line"><span class="comment"># For Ubuntu18.04, the default beignet package version is &gt; 1.3.</span></span><br><span class="line">sudo apt install beignet-dev</span><br><span class="line">clinfo</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-Convert-ONNX-model-to-openvino-model"><a href="#3-Convert-ONNX-model-to-openvino-model" class="headerlink" title="3. Convert ONNX model to openvino model:"></a>3. Convert ONNX model to openvino model:</h5><p>For me, I try to run onnx model in openvino, if you want to run Tensorflow or other model in openvino, you can see more detail in (<a href="https://docs.openvinotoolkit.org/latest/_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html" target="_blank" rel="noopener">https://docs.openvinotoolkit.org/latest/_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html</a>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/intel/openvino/deployment_tools/model_optimizer</span><br><span class="line"></span><br><span class="line">python3 mo.py --input_model &lt;PATH&gt; --data_type &#123;FP16,FP32,half,float&#125; --output_dir &lt;OUTPUT PATH&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-Inference-Demo"><a href="#4-Inference-Demo" class="headerlink" title="4. Inference Demo:"></a>4. Inference Demo:</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openvino.inference_engine <span class="keyword">import</span> IECore, IENetwork</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. Load IECore object</span></span><br><span class="line">OpenVinoIE = IECore()</span><br><span class="line">print(<span class="string">"Available Devices: "</span>, OpenVinoIE.available_devices)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Load CPU Extensions, if necessary.</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">'CPU'</span> <span class="keyword">in</span> device:</span><br><span class="line">    OpenVinoIE.add_extension(<span class="string">'/opt/intel/openvino/inference_engine/lib/intel64/libcpu_extension.so'</span>, <span class="string">"CPU"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Load Network</span></span><br><span class="line">net = OpenVinoIE.read_network(model=<span class="string">'&lt;openvino_model&gt;.xml'</span>,</span><br><span class="line">                weights=<span class="string">'&lt;openvino_model&gt;.bin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">###########################</span></span><br><span class="line"><span class="comment"># The following is Optional</span></span><br><span class="line"><span class="comment">###########################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get Input Layer Infomation</span></span><br><span class="line">inputLayer = next(iter(net.inputs))</span><br><span class="line">print(<span class="string">"Input Layer: "</span>, inputLayer)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get Output Layer Information</span></span><br><span class="line">outputLayer = next(iter(net.outputs))</span><br><span class="line">print(<span class="string">"Output Layer: "</span>, outputLayer)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get Input Shape of Model</span></span><br><span class="line">inputShape = net.inputs[inputLayer].shape</span><br><span class="line">print(<span class="string">"Input Shape: "</span>, inputShape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get Output Shape of Model</span></span><br><span class="line">outputShape = net.outputs[outputLayer].shape</span><br><span class="line">print(<span class="string">"Output Shape: "</span>, outputShape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. Load Executable Network</span></span><br><span class="line">exec_net = OpenVinoIE.load_network(network=net, device_name=<span class="string">'GPU or CPU'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. Infer network</span></span><br><span class="line">results = exec_net.infer(inputs=&#123;inputLayer: input&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-Infer-Speed-test"><a href="#5-Infer-Speed-test" class="headerlink" title="5. Infer Speed test:"></a>5. Infer Speed test:</h5><ul>
+<li>About 13~14 fps for infer with FP32 dtype model in Openvino edge device.</li>
+</ul>
+<h4 id="TensorRT"><a href="#TensorRT" class="headerlink" title="TensorRT:"></a><a href="https://developer.nvidia.com/tensorrt" title="TensorRT" target="_blank" rel="noopener">TensorRT</a>:</h4><p>NVIDIA TensorRT™ is an SDK for high-performance deep learning inference. It includes a deep learning inference optimizer and runtime that delivers low latency and high-throughput for deep learning inference applications.</p>
+<ul>
+<li>TensorRT-based applications perform up to 40x faster than CPU-only platforms during inference. With TensorRT, you can optimize neural network models trained in all major frameworks, calibrate for lower precision with high accuracy, and finally deploy to hyperscale data centers, embedded, or automotive product platforms.</li>
+<li>TensorRT is built on CUDA, NVIDIA’s parallel programming model, and enables you to optimize inference for all deep learning frameworks leveraging libraries, development tools and technologies in CUDA-X for artificial intelligence, autonomous machines, high-performance computing, and graphics.</li>
+<li>TensorRT provides INT8 and FP16 optimizations for production deployments of deep learning inference applications such as video streaming, speech recognition, recommendation and natural language processing. Reduced precision inference significantly reduces application latency, which is a requirement for many real-time services, auto and embedded applications.</li>
+<li>You can import trained models from every deep learning framework into TensorRT. After applying optimizations, TensorRT selects platform specific kernels to maximize performance on Tesla GPUs in the data center, Jetson embedded platforms, and NVIDIA DRIVE autonomous driving platforms.</li>
+</ul>
+<h5 id="1-Install-1"><a href="#1-Install-1" class="headerlink" title="1. Install:"></a>1. Install:</h5><p><strong>Note:</strong> For me, I use Jetson Nano to run TensorRT, which already has JetPack 4.3 with TensorRT 7.1 in OS. And if you convert the onnx model on other device, make sure that the host pc TensorRT version is as same as the infer device. For more detail about installation, please visit (<a href="https://github.com/NVIDIA/TensorRT" target="_blank" rel="noopener">https://github.com/NVIDIA/TensorRT</a>).</p>
+<h5 id="2-Convert-onnx-model-to-TensorRT-model"><a href="#2-Convert-onnx-model-to-TensorRT-model" class="headerlink" title="2. Convert onnx model to TensorRT model:"></a>2. Convert onnx model to TensorRT model:</h5><p><strong>Note:</strong> There are two ways to convert the onnx model to TensorRT model,<br>one is the command-line programs <code>trtexec</code> which can find in your TensorRT install path, other is using C++ or python api to convert it.</p>
+<ol>
+<li>Command-Line Programs, see more detail in (<a href="https://github.com/NVIDIA/TensorRT/tree/master/samples/opensource/trtexec" target="_blank" rel="noopener">https://github.com/NVIDIA/TensorRT/tree/master/samples/opensource/trtexec</a>):</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./trtexec --onnx=model.onnx</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Python API:</li>
+</ol>
+<p><strong>Note:</strong> the common file will show in the end.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_engine</span><span class="params">(onnx_file_path)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> trt.Builder(TRT_LOGGER) <span class="keyword">as</span> builder, builder.create_network(common.EXPLICIT_BATCH) <span class="keyword">as</span> network, trt.OnnxParser(network, TRT_LOGGER) <span class="keyword">as</span> parser:</span><br><span class="line">        builder.max_workspace_size = <span class="number">1</span> &lt;&lt; <span class="number">30</span> <span class="comment"># 1 Gib.</span></span><br><span class="line">        builder.max_batch_size = <span class="number">1</span></span><br><span class="line">        <span class="comment"># FP16</span></span><br><span class="line">        builder.fp16_mode = <span class="keyword">True</span></span><br><span class="line">        <span class="comment">#builder.strict_type_constraints = True</span></span><br><span class="line">        <span class="keyword">with</span> open(onnx_file_path, <span class="string">'rb'</span>) <span class="keyword">as</span> model:</span><br><span class="line">            print(<span class="string">'Beginning ONNX file parsing'</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> parser.parse(model.read()):</span><br><span class="line">                print(<span class="string">'[ERROR]: Failed to parse the ONNX file.'</span>)</span><br><span class="line">                <span class="keyword">for</span> error <span class="keyword">in</span> range(parser.num_errors):</span><br><span class="line">                    print(parser.get_error(error))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        network.get_input(<span class="number">0</span>).shape = [<span class="number">1</span>,<span class="number">4</span>,<span class="number">288</span>,<span class="number">512</span>]</span><br><span class="line">        engine = builder.build_cuda_engine(network)</span><br><span class="line">        <span class="keyword">return</span> engine</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-Inference-Demo"><a href="#3-Inference-Demo" class="headerlink" title="3. Inference Demo:"></a>3. Inference Demo:</h5><p><strong>Note:</strong> common file see the following, and pycuda install by pip.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorrt <span class="keyword">as</span> trt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pycuda.driver <span class="keyword">as</span> cuda</span><br><span class="line"><span class="keyword">import</span> pycuda.autoinit</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> common <span class="comment"># See the following.</span></span><br><span class="line"></span><br><span class="line">TRT_LOGGER = trt.Logger()</span><br><span class="line"></span><br><span class="line"><span class="comment"># The following depend on float16, FP16!!!</span></span><br><span class="line">onnx_file_path = <span class="string">'../models/DFA_model_simple.onnx'</span></span><br><span class="line">i_file = <span class="string">'../test/rs02_1564022347_05.jpg'</span></span><br><span class="line">d_file = <span class="string">'../test/rs02_1564022347_05.pgm'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_engine</span><span class="params">(onnx_file_path)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> trt.Builder(TRT_LOGGER) <span class="keyword">as</span> builder, builder.create_network(common.EXPLICIT_BATCH) <span class="keyword">as</span> network, trt.OnnxParser(network, TRT_LOGGER) <span class="keyword">as</span> parser:</span><br><span class="line">        builder.max_workspace_size = <span class="number">1</span> &lt;&lt; <span class="number">30</span></span><br><span class="line">        builder.max_batch_size = <span class="number">1</span></span><br><span class="line">        <span class="comment"># FP16</span></span><br><span class="line">        builder.fp16_mode = <span class="keyword">True</span></span><br><span class="line">        <span class="comment">#builder.strict_type_constraints = True</span></span><br><span class="line">        <span class="keyword">with</span> open(onnx_file_path, <span class="string">'rb'</span>) <span class="keyword">as</span> model:</span><br><span class="line">            print(<span class="string">'Beginning ONNX file parsing'</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> parser.parse(model.read()):</span><br><span class="line">                print(<span class="string">'[ERROR]: Failed to parse the ONNX file.'</span>)</span><br><span class="line">                <span class="keyword">for</span> error <span class="keyword">in</span> range(parser.num_errors):</span><br><span class="line">                    print(parser.get_error(error))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        network.get_input(<span class="number">0</span>).shape = [<span class="number">1</span>,<span class="number">4</span>,<span class="number">288</span>,<span class="number">512</span>]</span><br><span class="line">        engine = builder.build_cuda_engine(network)</span><br><span class="line">        <span class="keyword">return</span> engine</span><br><span class="line"></span><br><span class="line">engine = build_engine(onnx_file_path)</span><br><span class="line">context = engine.create_execution_context()</span><br><span class="line"></span><br><span class="line">inputs, outputs, bindings, stream = common.allocate_buffers(engine)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">i_raw = Image.open(i_file)</span><br><span class="line">i_raw = i_raw.resize((<span class="number">512</span>, <span class="number">288</span>)) <span class="comment"># WHC</span></span><br><span class="line">i_raw = np.asarray(i_raw, dtype=np.float32, order=<span class="string">'C'</span>) <span class="comment"># HWC</span></span><br><span class="line">d_raw = Image.open(d_file)</span><br><span class="line">d_raw = d_raw.resize((<span class="number">512</span>, <span class="number">288</span>))</span><br><span class="line">d_raw = np.asarray(d_raw, dtype=np.int16, order=<span class="string">'C'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># The numpy's toTensor and normalize operation copy from Pytorch.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">toTensor</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''Change the data range to [0.0, 1.0]</span></span><br><span class="line"><span class="string">    Return [B, C, H, W]</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">assert</span> data.ndim == <span class="number">2</span> <span class="keyword">or</span> data.ndim == <span class="number">3</span></span><br><span class="line">    <span class="keyword">if</span> data.ndim == <span class="number">2</span>:</span><br><span class="line">        <span class="comment"># depth</span></span><br><span class="line">        data = data[..., np.newaxis]</span><br><span class="line">        mask = data &gt; <span class="number">10000</span></span><br><span class="line">        data[mask] = <span class="number">0</span></span><br><span class="line">        data = data / <span class="number">10000.</span></span><br><span class="line">    <span class="keyword">elif</span> data.ndim == <span class="number">3</span>:</span><br><span class="line">        <span class="comment"># image</span></span><br><span class="line">        data = data / <span class="number">255.</span></span><br><span class="line">    data = np.transpose(data, (<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">    data = data[np.newaxis, ...]</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize</span><span class="params">(data, mean, std)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> data.ndim == <span class="number">4</span></span><br><span class="line">    <span class="keyword">assert</span> data.shape[<span class="number">1</span>] == len(mean) == len(std)</span><br><span class="line">    batch_size = data.shape[<span class="number">0</span>]</span><br><span class="line">    mean, std = np.asarray(mean), np.asarray(std)</span><br><span class="line">    mean = mean[..., np.newaxis, np.newaxis]</span><br><span class="line">    std = std[..., np.newaxis, np.newaxis]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(batch_size):</span><br><span class="line">        data[i, ...] = (data[i, ...] - mean) / std</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"><span class="comment"># Start Process Input data   #</span></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"></span><br><span class="line">data = toTensor(d_raw)</span><br><span class="line">data = normalize(data, [<span class="number">0.1864497</span>], [<span class="number">0.07711394</span>])</span><br><span class="line">img_data = toTensor(i_raw)</span><br><span class="line">img_data = normalize(img_data, [<span class="number">0.368</span>, <span class="number">0.393</span>, <span class="number">0.404</span>], [<span class="number">0.286</span>, <span class="number">0.290</span>, <span class="number">0.296</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># [1, 4, 288, 512] NCHW</span></span><br><span class="line">test = np.concatenate((img_data, data), axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># FP16</span></span><br><span class="line">test = test.astype(np.float16)</span><br><span class="line"><span class="comment">###################################</span></span><br><span class="line"><span class="comment"># Make sure the flags of the</span></span><br><span class="line"><span class="comment"># input data [C_CONTIGUOUS = True]</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If not, try np.ascontiguousarray</span></span><br><span class="line"><span class="comment"># test = np.ascontiguousarray(test)</span></span><br><span class="line"><span class="comment">###################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Inputs</span></span><br><span class="line">inputs[<span class="number">0</span>].host = test</span><br><span class="line">trt_outputs = common.do_inference_v2(context,</span><br><span class="line">                                     bindings=bindings,</span><br><span class="line">                                     inputs=inputs,</span><br><span class="line">                                     outputs=outputs,</span><br><span class="line">                                     stream=stream)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>common.py file:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pycuda.driver <span class="keyword">as</span> cuda</span><br><span class="line"><span class="keyword">import</span> pycuda.autoinit</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorrt <span class="keyword">as</span> trt</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># Sometimes python2 does not understand FileNotFoundError</span></span><br><span class="line">    FileNotFoundError</span><br><span class="line"><span class="keyword">except</span> NameError:</span><br><span class="line">    FileNotFoundError = IOError</span><br><span class="line"></span><br><span class="line">EXPLICIT_BATCH = <span class="number">1</span> &lt;&lt; (int)(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GiB</span><span class="params">(val)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> val * <span class="number">1</span> &lt;&lt; <span class="number">30</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_help</span><span class="params">(description)</span>:</span></span><br><span class="line">    parser = argparse.ArgumentParser(description=description, formatter_class=argparse.ArgumentDefaultsHelpFormatter)</span><br><span class="line">    args, _ = parser.parse_known_args()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_sample_data</span><span class="params">(description=<span class="string">"Runs a TensorRT Python sample"</span>, subfolder=<span class="string">""</span>, find_files=[])</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    Parses sample arguments.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        description (str): Description of the sample.</span></span><br><span class="line"><span class="string">        subfolder (str): The subfolder containing data relevant to this sample</span></span><br><span class="line"><span class="string">        find_files (str): A list of filenames to find. Each filename will be replaced with an absolute path.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        str: Path of data directory.</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Standard command-line arguments for all samples.</span></span><br><span class="line">    kDEFAULT_DATA_ROOT = os.path.join(os.sep, <span class="string">"usr"</span>, <span class="string">"src"</span>, <span class="string">"tensorrt"</span>, <span class="string">"data"</span>)</span><br><span class="line">    parser = argparse.ArgumentParser(description=description, formatter_class=argparse.ArgumentDefaultsHelpFormatter)</span><br><span class="line">    parser.add_argument(<span class="string">"-d"</span>, <span class="string">"--datadir"</span>, help=<span class="string">"Location of the TensorRT sample data directory, and any additional data directories."</span>, action=<span class="string">"append"</span>, default=[kDEFAULT_DATA_ROOT])</span><br><span class="line">    args, _ = parser.parse_known_args()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_data_path</span><span class="params">(data_dir)</span>:</span></span><br><span class="line">        <span class="comment"># If the subfolder exists, append it to the path, otherwise use the provided path as-is.</span></span><br><span class="line">        data_path = os.path.join(data_dir, subfolder)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(data_path):</span><br><span class="line">            print(<span class="string">"WARNING: "</span> + data_path + <span class="string">" does not exist. Trying "</span> + data_dir + <span class="string">" instead."</span>)</span><br><span class="line">            data_path = data_dir</span><br><span class="line">        <span class="comment"># Make sure data directory exists.</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (os.path.exists(data_path)):</span><br><span class="line">            print(<span class="string">"WARNING: &#123;:&#125; does not exist. Please provide the correct data path with the -d option."</span>.format(data_path))</span><br><span class="line">        <span class="keyword">return</span> data_path</span><br><span class="line"></span><br><span class="line">    data_paths = [get_data_path(data_dir) <span class="keyword">for</span> data_dir <span class="keyword">in</span> args.datadir]</span><br><span class="line">    <span class="keyword">return</span> data_paths, locate_files(data_paths, find_files)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">locate_files</span><span class="params">(data_paths, filenames)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Locates the specified files in the specified data directories.</span></span><br><span class="line"><span class="string">    If a file exists in multiple data directories, the first directory is used.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        data_paths (List[str]): The data directories.</span></span><br><span class="line"><span class="string">        filename (List[str]): The names of the files to find.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        List[str]: The absolute paths of the files.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Raises:</span></span><br><span class="line"><span class="string">        FileNotFoundError if a file could not be located.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    found_files = [<span class="keyword">None</span>] * len(filenames)</span><br><span class="line">    <span class="keyword">for</span> data_path <span class="keyword">in</span> data_paths:</span><br><span class="line">        <span class="comment"># Find all requested files.</span></span><br><span class="line">        <span class="keyword">for</span> index, (found, filename) <span class="keyword">in</span> enumerate(zip(found_files, filenames)):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> found:</span><br><span class="line">                file_path = os.path.abspath(os.path.join(data_path, filename))</span><br><span class="line">                <span class="keyword">if</span> os.path.exists(file_path):</span><br><span class="line">                    found_files[index] = file_path</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Check that all files were found</span></span><br><span class="line">    <span class="keyword">for</span> f, filename <span class="keyword">in</span> zip(found_files, filenames):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f <span class="keyword">or</span> <span class="keyword">not</span> os.path.exists(f):</span><br><span class="line">            <span class="keyword">raise</span> FileNotFoundError(<span class="string">"Could not find &#123;:&#125;. Searched in data paths: &#123;:&#125;"</span>.format(filename, data_paths))</span><br><span class="line">    <span class="keyword">return</span> found_files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Simple helper data class that's a little nicer to use than a 2-tuple.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HostDeviceMem</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, host_mem, device_mem)</span>:</span></span><br><span class="line">        self.host = host_mem</span><br><span class="line">        self.device = device_mem</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Host:\n"</span> + str(self.host) + <span class="string">"\nDevice:\n"</span> + str(self.device)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__str__()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Allocates all buffers required for an engine, i.e. host/device inputs/outputs.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">allocate_buffers</span><span class="params">(engine)</span>:</span></span><br><span class="line">    inputs = []</span><br><span class="line">    outputs = []</span><br><span class="line">    bindings = []</span><br><span class="line">    stream = cuda.Stream()</span><br><span class="line">    <span class="keyword">for</span> binding <span class="keyword">in</span> engine:</span><br><span class="line">        size = trt.volume(engine.get_binding_shape(binding)) * engine.max_batch_size</span><br><span class="line">        dtype = trt.nptype(engine.get_binding_dtype(binding))</span><br><span class="line">        <span class="comment"># Allocate host and device buffers</span></span><br><span class="line">        host_mem = cuda.pagelocked_empty(size, dtype)</span><br><span class="line">        device_mem = cuda.mem_alloc(host_mem.nbytes)</span><br><span class="line">        <span class="comment"># Append the device buffer to device bindings.</span></span><br><span class="line">        bindings.append(int(device_mem))</span><br><span class="line">        <span class="comment"># Append to the appropriate list.</span></span><br><span class="line">        <span class="keyword">if</span> engine.binding_is_input(binding):</span><br><span class="line">            inputs.append(HostDeviceMem(host_mem, device_mem))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            outputs.append(HostDeviceMem(host_mem, device_mem))</span><br><span class="line">    <span class="keyword">return</span> inputs, outputs, bindings, stream</span><br><span class="line"></span><br><span class="line"><span class="comment"># This function is generalized for multiple inputs/outputs.</span></span><br><span class="line"><span class="comment"># inputs and outputs are expected to be lists of HostDeviceMem objects.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do_inference</span><span class="params">(context, bindings, inputs, outputs, stream, batch_size=<span class="number">1</span>)</span>:</span></span><br><span class="line">    <span class="comment"># Transfer input data to the GPU.</span></span><br><span class="line">    [cuda.memcpy_htod_async(inp.device, inp.host, stream) <span class="keyword">for</span> inp <span class="keyword">in</span> inputs]</span><br><span class="line">    <span class="comment"># Run inference.</span></span><br><span class="line">    context.execute_async(batch_size=batch_size, bindings=bindings, stream_handle=stream.handle)</span><br><span class="line">    <span class="comment"># Transfer predictions back from the GPU.</span></span><br><span class="line">    [cuda.memcpy_dtoh_async(out.host, out.device, stream) <span class="keyword">for</span> out <span class="keyword">in</span> outputs]</span><br><span class="line">    <span class="comment"># Synchronize the stream</span></span><br><span class="line">    stream.synchronize()</span><br><span class="line">    <span class="comment"># Return only the host outputs.</span></span><br><span class="line">    <span class="keyword">return</span> [out.host <span class="keyword">for</span> out <span class="keyword">in</span> outputs]</span><br><span class="line"></span><br><span class="line"><span class="comment"># This function is generalized for multiple inputs/outputs for full dimension networks.</span></span><br><span class="line"><span class="comment"># inputs and outputs are expected to be lists of HostDeviceMem objects.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do_inference_v2</span><span class="params">(context, bindings, inputs, outputs, stream)</span>:</span></span><br><span class="line">    <span class="comment"># Transfer input data to the GPU.</span></span><br><span class="line">    [cuda.memcpy_htod_async(inp.device, inp.host, stream) <span class="keyword">for</span> inp <span class="keyword">in</span> inputs]</span><br><span class="line">    <span class="comment"># Run inference.</span></span><br><span class="line">    context.execute_async_v2(bindings=bindings, stream_handle=stream.handle)</span><br><span class="line">    <span class="comment"># Transfer predictions back from the GPU.</span></span><br><span class="line">    [cuda.memcpy_dtoh_async(out.host, out.device, stream) <span class="keyword">for</span> out <span class="keyword">in</span> outputs]</span><br><span class="line">    <span class="comment"># Synchronize the stream</span></span><br><span class="line">    stream.synchronize()</span><br><span class="line">    <span class="comment"># Return only the host outputs.</span></span><br><span class="line">    <span class="keyword">return</span> [out.host <span class="keyword">for</span> out <span class="keyword">in</span> outputs]</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-Infer-Speed-test"><a href="#4-Infer-Speed-test" class="headerlink" title="4. Infer Speed test:"></a>4. Infer Speed test:</h5><ul>
+<li>Jetson Nano: {‘Inference FPS’: {‘FP32’: ~11.52, ‘FP16’: ~14.25}}</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/uploads/qrcode_for_mlife.jpg" alt="Mikoy Chinese wechat" style="width: 200px; max-width: 100%;">
+  <div>Subscribe my public wechat account by scanning.</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Mikoy Chinese</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://www.mikoychinese.top/post/20200711-Edge-Inference-Toolkit-Openvino-vs-TensorRT/" title="Edge Inference Toolkit: Openvino vs TensorRT">https://www.mikoychinese.top/post/20200711-Edge-Inference-Toolkit-Openvino-vs-TensorRT/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+    
+    <div>
+  		
+    		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><i class="fa fa-heart"></i><br>--------------------　　　ENDING　　　--------------------</div>
+    
+</div>
+
+  		
+	</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/wiki/" rel="tag"># wiki</a>
+          
+            <a href="/tags/TensorRT/" rel="tag"># TensorRT</a>
+          
+            <a href="/tags/OpenVino/" rel="tag"># OpenVino</a>
+          
+            <a href="/tags/Edge-device/" rel="tag"># Edge device</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/20200328-2020-1st-quarter-summary-and-Principles/" rel="next" title="2020年一季度总结 | 原则">
+                <i class="fa fa-chevron-left"></i> 2020年一季度总结 | 原则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_215x215.jpg" alt="Mikoy Chinese">
+            
+              <p class="site-author-name" itemprop="name">Mikoy Chinese</p>
+              <p class="site-description motion-element" itemprop="description">Mikoy Chinese || Blog and IT, AI, Finacial knowledge wiki share.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:mikoychinese@gmail.com" title="E-Mail &rarr; mailto:mikoychinese@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/1870977125" title="Weibo &rarr; https://weibo.com/1870977125" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/MikoyChinese" title="Twitter &rarr; https://twitter.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/MikoyChinese" title="GitHub &rarr; https://github.com/MikoyChinese" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="310" height="86" src="//music.163.com/outchain/player?type=2&id=32217265&auto=0&height=66"></iframe>
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Test-Environment"><span class="nav-number">1.</span> <span class="nav-text">Test Environment:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pytorch-To-ONNX"><span class="nav-number">2.</span> <span class="nav-text">Pytorch To ONNX:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenVino"><span class="nav-number">3.</span> <span class="nav-text">OpenVino:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Install"><span class="nav-number">3.1.</span> <span class="nav-text">1. Install:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Enable-Intel-GPU-device-in-openvino"><span class="nav-number">3.2.</span> <span class="nav-text">2. Enable Intel GPU device in openvino:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Convert-ONNX-model-to-openvino-model"><span class="nav-number">3.3.</span> <span class="nav-text">3. Convert ONNX model to openvino model:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-Inference-Demo"><span class="nav-number">3.4.</span> <span class="nav-text">4. Inference Demo:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-Infer-Speed-test"><span class="nav-number">3.5.</span> <span class="nav-text">5. Infer Speed test:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TensorRT"><span class="nav-number">4.</span> <span class="nav-text">TensorRT:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Install-1"><span class="nav-number">4.1.</span> <span class="nav-text">1. Install:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Convert-onnx-model-to-TensorRT-model"><span class="nav-number">4.2.</span> <span class="nav-text">2. Convert onnx model to TensorRT model:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Inference-Demo"><span class="nav-number">4.3.</span> <span class="nav-text">3. Inference Demo:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-Infer-Speed-test"><span class="nav-number">4.4.</span> <span class="nav-text">4. Infer Speed test:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Author: Mikoy Chinese</span><span class="with-love" id="animate">
+    <i class="fa fa-universal-access" aria-hidden="true"></i>
+  </span>	
+	<a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备20021684号 </a>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="/js/src/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'brvTzcxBkkKnhwjC0RIcuOE3-gzGzoHsz',
+    appKey: 'VzRqmqpvEeuGe0J50AUMTQuH',
+    placeholder: 'What about your thinking? Leave a message.',
+    avatar: 'monsterid',
+    meta: guest,
+    pageSize: '5' || 10,
+    visitor: false,
+    lang: 'en' || 'en'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.0"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+  <script>
+	(function(){
+    	var bp = document.createElement('script');
+    	var curProtocol = window.location.protocol.split(':')[0];
+    	if (curProtocol === 'https') {
+        	bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    	}
+    	else {
+        	bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    	}
+    	var s = document.getElementsByTagName("script")[0];
+    	s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</body>
+</html>
